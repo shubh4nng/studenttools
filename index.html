@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StudentTools — Tools for Students</title>
+<title>StudentTools — Study Smarter</title>
 
 <style>
 * {
@@ -13,23 +13,29 @@
 }
 
 :root {
-    --bg: #f7f8fc;
-    --card: rgba(255,255,255,.82);
-    --text: #151625;
-    --muted: #6b6e80;
+    --bg: #f6f7fb;
+    --surface: rgba(255,255,255,.78);
+    --surface-solid: #ffffff;
+    --text: #151623;
+    --muted: #707386;
     --border: rgba(20,20,40,.08);
-    --primary: #6d5dfc;
-    --primary2: #8d5cff;
-    --shadow: 0 15px 45px rgba(30,25,80,.09);
+    --primary: #705cff;
+    --primary-dark: #5b48e8;
+    --purple: #9a5cff;
+    --green: #28b981;
+    --red: #ef5b68;
+    --yellow: #f3b72f;
+    --shadow: 0 18px 55px rgba(35,28,90,.09);
 }
 
 body.dark {
-    --bg: #0c0d14;
-    --card: rgba(23,24,36,.82);
+    --bg: #0b0c12;
+    --surface: rgba(22,23,34,.78);
+    --surface-solid: #161722;
     --text: #f5f5fa;
-    --muted: #a5a7b5;
+    --muted: #a5a7b6;
     --border: rgba(255,255,255,.08);
-    --shadow: 0 15px 45px rgba(0,0,0,.3);
+    --shadow: 0 20px 60px rgba(0,0,0,.3);
 }
 
 html {
@@ -39,33 +45,33 @@ html {
 body {
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background:
-        radial-gradient(circle at 10% 10%, rgba(109,93,252,.12), transparent 28%),
-        radial-gradient(circle at 90% 20%, rgba(141,92,255,.10), transparent 28%),
+        radial-gradient(circle at 5% 5%, rgba(112,92,255,.13), transparent 27%),
+        radial-gradient(circle at 95% 10%, rgba(154,92,255,.10), transparent 28%),
         var(--bg);
     color: var(--text);
     min-height: 100vh;
-    transition: background .3s, color .3s;
+    transition: .3s;
 }
 
-/* NAVBAR */
+/* NAV */
 
 .navbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(18px);
-    background: rgba(247,248,252,.72);
+    background: rgba(246,247,251,.72);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
 }
 
 body.dark .navbar {
-    background: rgba(12,13,20,.72);
+    background: rgba(11,12,18,.75);
 }
 
 .nav-inner {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: auto;
-    padding: 16px 22px;
+    padding: 14px 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -75,197 +81,264 @@ body.dark .navbar {
     display: flex;
     align-items: center;
     gap: 11px;
+    font-weight: 850;
     font-size: 19px;
-    font-weight: 800;
     letter-spacing: -.5px;
 }
 
 .logo-icon {
-    width: 39px;
-    height: 39px;
-    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
     display: grid;
     place-items: center;
     color: white;
-    background: linear-gradient(135deg, var(--primary), var(--primary2));
-    box-shadow: 0 8px 22px rgba(109,93,252,.3);
+    background: linear-gradient(135deg,var(--primary),var(--purple));
+    box-shadow: 0 10px 25px rgba(112,92,255,.3);
 }
 
-.nav-actions {
+.nav-right {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .nav-link {
-    text-decoration: none;
     color: var(--muted);
-    font-weight: 600;
+    text-decoration: none;
+    font-weight: 650;
+    font-size: 14px;
     margin-right: 10px;
 }
 
-.theme-btn {
+.nav-btn {
     border: 1px solid var(--border);
-    background: var(--card);
+    background: var(--surface);
     color: var(--text);
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
+    border-radius: 12px;
+    width: 41px;
+    height: 41px;
     cursor: pointer;
-    font-size: 18px;
-    transition: .2s;
+    font-size: 17px;
 }
 
-.theme-btn:hover {
-    transform: translateY(-2px);
+.pro-nav {
+    display: none;
+    border: none;
+    color: white;
+    background: linear-gradient(135deg,var(--primary),var(--purple));
+    padding: 10px 15px;
+    border-radius: 11px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+body.pro .pro-nav {
+    display: block;
 }
 
 /* HERO */
 
 .hero {
-    max-width: 1180px;
+    max-width: 1200px;
     margin: auto;
-    padding: 85px 22px 65px;
+    padding: 80px 22px 55px;
     text-align: center;
-    position: relative;
 }
 
-.hero-badge {
+.badge {
     display: inline-flex;
-    align-items: center;
-    gap: 7px;
     padding: 8px 14px;
-    border: 1px solid rgba(109,93,252,.2);
-    background: rgba(109,93,252,.08);
-    color: var(--primary);
     border-radius: 999px;
+    color: var(--primary);
+    background: rgba(112,92,255,.09);
+    border: 1px solid rgba(112,92,255,.16);
     font-size: 13px;
-    font-weight: 750;
+    font-weight: 800;
     margin-bottom: 22px;
 }
 
 .hero h1 {
-    font-size: clamp(46px, 7vw, 78px);
+    font-size: clamp(45px,7vw,78px);
     line-height: .98;
     letter-spacing: -4px;
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
 }
 
-.gradient-text {
-    background: linear-gradient(120deg, #6655fa, #a257ff, #6655fa);
+.gradient {
+    background: linear-gradient(120deg,#6654fa,#a65cff,#6654fa);
     background-size: 200% auto;
     -webkit-background-clip: text;
     color: transparent;
-    animation: gradientMove 5s linear infinite;
+    animation: gradient 5s linear infinite;
 }
 
-@keyframes gradientMove {
-    to {
-        background-position: 200% center;
-    }
+@keyframes gradient {
+    to { background-position: 200% center; }
 }
 
 .hero p {
-    max-width: 650px;
+    max-width: 670px;
     margin: 24px auto 0;
     color: var(--muted);
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.7;
 }
 
-.hero-actions {
-    margin-top: 30px;
+.hero-buttons {
     display: flex;
     justify-content: center;
     gap: 12px;
+    margin-top: 29px;
     flex-wrap: wrap;
 }
 
-.primary-btn,
-.secondary-btn {
+.primary,
+.secondary {
     border: none;
-    border-radius: 14px;
+    border-radius: 13px;
     padding: 14px 21px;
-    font-weight: 750;
+    font-weight: 800;
     cursor: pointer;
-    font-size: 14px;
-    transition: .25s;
+    transition: .2s;
 }
 
-.primary-btn {
+.primary {
     color: white;
-    background: linear-gradient(135deg, var(--primary), var(--primary2));
-    box-shadow: 0 12px 25px rgba(109,93,252,.25);
+    background: linear-gradient(135deg,var(--primary),var(--purple));
+    box-shadow: 0 12px 27px rgba(112,92,255,.25);
 }
 
-.secondary-btn {
+.secondary {
     color: var(--text);
-    background: var(--card);
+    background: var(--surface);
     border: 1px solid var(--border);
 }
 
-.primary-btn:hover,
-.secondary-btn:hover {
+.primary:hover,
+.secondary:hover {
     transform: translateY(-3px);
 }
 
 /* SEARCH */
 
-.search-wrap {
+.search-container {
     max-width: 650px;
-    margin: 30px auto 0;
+    margin: 28px auto 0;
     position: relative;
+}
+
+.search-container span {
+    position: absolute;
+    left: 17px;
+    top: 14px;
+    font-size: 19px;
 }
 
 .search {
     width: 100%;
-    padding: 17px 20px 17px 48px;
     border: 1px solid var(--border);
-    border-radius: 16px;
-    background: var(--card);
-    color: var(--text);
-    outline: none;
-    font-size: 15px;
-    box-shadow: var(--shadow);
+    background: var(--surface);
     backdrop-filter: blur(15px);
+    color: var(--text);
+    padding: 15px 18px 15px 47px;
+    border-radius: 15px;
+    outline: none;
+    box-shadow: var(--shadow);
+    font-size: 14px;
 }
 
-.search:focus {
-    border-color: rgba(109,93,252,.5);
-    box-shadow: 0 0 0 4px rgba(109,93,252,.08);
+/* DASHBOARD */
+
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto 35px;
+    padding: 0 22px;
 }
 
-.search-icon {
-    position: absolute;
-    left: 18px;
-    top: 16px;
-    font-size: 18px;
+.dashboard-card {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    backdrop-filter: blur(18px);
+    border-radius: 23px;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.dashboard-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    color: white;
+    background: linear-gradient(135deg,var(--primary),var(--purple));
+    font-weight: 900;
+}
+
+.dashboard-card h3 {
+    font-size: 16px;
+}
+
+.dashboard-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.stats {
+    display: flex;
+    gap: 25px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    font-size: 21px;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 11px;
 }
 
 /* TOOLS */
 
-.tools-section {
-    max-width: 1180px;
+.tools {
+    max-width: 1200px;
     margin: auto;
-    padding: 20px 22px 80px;
+    padding: 15px 22px 90px;
 }
 
-.section-heading {
+.section-head {
     display: flex;
     justify-content: space-between;
     align-items: end;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-.section-heading h2 {
-    font-size: 30px;
+.section-head h2 {
+    font-size: 29px;
     letter-spacing: -1px;
 }
 
-.section-heading p {
+.section-head p {
     color: var(--muted);
-    margin-top: 5px;
+    margin-top: 4px;
+    font-size: 14px;
 }
 
 .tool-count {
@@ -273,383 +346,494 @@ body.dark .navbar {
     font-size: 13px;
 }
 
-.tools-grid {
+.category-title {
+    margin: 27px 0 13px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.category-title h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.category-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.tool-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 17px;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
 }
 
 .tool-card {
-    border: 1px solid var(--border);
-    background: var(--card);
-    backdrop-filter: blur(15px);
-    border-radius: 22px;
-    padding: 23px;
-    cursor: pointer;
-    box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
-    transition: transform .25s, box-shadow .25s, border .25s;
-}
-
-.tool-card::before {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    right: -45px;
-    top: -45px;
-    background: rgba(109,93,252,.12);
-    border-radius: 50%;
+    min-height: 190px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: .25s;
 }
 
 .tool-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 22px 55px rgba(40,30,100,.14);
-    border-color: rgba(109,93,252,.25);
+    transform: translateY(-6px);
+    border-color: rgba(112,92,255,.25);
+    box-shadow: 0 24px 60px rgba(35,28,90,.14);
+}
+
+.tool-card.pro-card {
+    background:
+        linear-gradient(145deg,rgba(112,92,255,.09),rgba(154,92,255,.04)),
+        var(--surface);
 }
 
 .tool-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
+    width: 47px;
+    height: 47px;
+    border-radius: 14px;
     display: grid;
     place-items: center;
-    font-size: 23px;
-    background: rgba(109,93,252,.11);
-    margin-bottom: 18px;
+    background: rgba(112,92,255,.1);
+    font-size: 21px;
+    margin-bottom: 17px;
 }
 
 .tool-card h3 {
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 7px;
 }
 
 .tool-card p {
     color: var(--muted);
-    font-size: 14px;
+    font-size: 12.5px;
     line-height: 1.5;
-    min-height: 42px;
 }
 
-.tool-arrow {
+.arrow {
     position: absolute;
-    right: 22px;
-    bottom: 22px;
+    right: 19px;
+    bottom: 18px;
     color: var(--primary);
-    font-weight: bold;
+    font-weight: 900;
 }
 
-/* TOOL AREA */
+.lock {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    font-size: 14px;
+    padding: 5px 7px;
+    border-radius: 8px;
+    background: rgba(112,92,255,.1);
+    color: var(--primary);
+}
 
-.tool-area {
-    display: none;
-    max-width: 850px;
-    margin: 35px auto 80px;
+.pro-label {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    font-size: 9px;
+    font-weight: 900;
+    color: white;
+    background: linear-gradient(135deg,var(--primary),var(--purple));
+    padding: 5px 8px;
+    border-radius: 7px;
+}
+
+/* PRO BANNER */
+
+.pro-banner {
+    max-width: 1200px;
+    margin: 10px auto 35px;
     padding: 0 22px;
 }
 
-.tool-area.active {
-    display: block;
-    animation: appear .35s ease;
+.pro-banner-inner {
+    position: relative;
+    overflow: hidden;
+    padding: 35px;
+    border-radius: 25px;
+    color: white;
+    background: linear-gradient(120deg,#5d4ce9,#8f50e9,#b25cf5);
+    box-shadow: 0 20px 50px rgba(112,92,255,.22);
 }
 
-@keyframes appear {
+.pro-banner-inner::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    right: -80px;
+    top: -100px;
+    background: rgba(255,255,255,.1);
+}
+
+.pro-banner h2 {
+    font-size: 27px;
+    margin-bottom: 7px;
+}
+
+.pro-banner p {
+    opacity: .85;
+    max-width: 620px;
+    font-size: 14px;
+}
+
+.pro-banner button {
+    margin-top: 19px;
+    background: white;
+    color: #624ee8;
+    border: none;
+    border-radius: 11px;
+    padding: 12px 17px;
+    font-weight: 850;
+    cursor: pointer;
+}
+
+/* TOOL MODAL */
+
+.tool-screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(8px);
+    overflow-y: auto;
+    padding: 40px 20px;
+}
+
+.tool-screen.show {
+    display: block;
+}
+
+.tool-panel {
+    max-width: 780px;
+    margin: auto;
+    background: var(--surface-solid);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    padding: 28px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.25);
+    animation: popup .25s ease;
+}
+
+@keyframes popup {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(15px) scale(.98);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
     }
 }
 
-.tool-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(15px);
+.close {
+    float: right;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 11px;
+    background: rgba(120,120,130,.1);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 18px;
 }
 
-.tool-top {
+.tool-heading {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 28px;
+    gap: 14px;
+    margin-bottom: 25px;
 }
 
-.tool-top-icon {
-    width: 56px;
-    height: 56px;
+.tool-heading-icon {
+    width: 54px;
+    height: 54px;
     display: grid;
     place-items: center;
-    background: rgba(109,93,252,.12);
-    border-radius: 17px;
+    border-radius: 16px;
+    background: rgba(112,92,255,.1);
+    font-size: 24px;
+}
+
+.tool-heading h2 {
     font-size: 25px;
 }
 
-.tool-top h2 {
-    font-size: 27px;
-}
-
-.tool-top p {
+.tool-heading p {
     color: var(--muted);
+    font-size: 13px;
     margin-top: 3px;
 }
 
-.back-btn {
-    margin-bottom: 18px;
-    background: transparent;
-    color: var(--muted);
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
+.field {
+    margin-bottom: 15px;
 }
 
-.input-group {
-    margin-bottom: 17px;
-}
-
-.input-group label {
+.field label {
     display: block;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 6px;
 }
 
 .input,
 select,
 textarea {
     width: 100%;
+    padding: 13px;
+    border-radius: 12px;
     border: 1px solid var(--border);
-    border-radius: 13px;
-    padding: 13px 14px;
-    background: rgba(255,255,255,.45);
+    background: rgba(120,120,130,.06);
     color: var(--text);
     outline: none;
-    font-size: 14px;
-}
-
-body.dark .input,
-body.dark select,
-body.dark textarea {
-    background: rgba(255,255,255,.04);
+    font-family: inherit;
 }
 
 .input:focus,
 select:focus,
 textarea:focus {
-    border-color: rgba(109,93,252,.5);
+    border-color: rgba(112,92,255,.5);
 }
 
-.calc-btn {
+.calc {
     width: 100%;
-    margin-top: 7px;
-    padding: 14px;
     border: none;
-    border-radius: 13px;
-    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    border-radius: 12px;
+    padding: 14px;
+    background: linear-gradient(135deg,var(--primary),var(--purple));
     color: white;
-    font-weight: 800;
+    font-weight: 850;
     cursor: pointer;
-    transition: .2s;
-}
-
-.calc-btn:hover {
-    transform: translateY(-2px);
+    margin-top: 5px;
 }
 
 .result {
-    margin-top: 20px;
+    margin-top: 17px;
     padding: 20px;
-    border-radius: 16px;
-    background: rgba(109,93,252,.08);
-    border: 1px solid rgba(109,93,252,.12);
     text-align: center;
+    border-radius: 15px;
+    background: rgba(112,92,255,.08);
+    border: 1px solid rgba(112,92,255,.12);
 }
 
 .result strong {
     display: block;
-    font-size: 34px;
-    margin-top: 5px;
     color: var(--primary);
+    font-size: 31px;
+    margin-top: 5px;
 }
 
-.row {
+.two {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 13px;
 }
 
-.weighted-row {
+.three {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr auto;
-    gap: 10px;
-    margin-bottom: 10px;
-    align-items: center;
+    grid-template-columns: repeat(3,1fr);
+    gap: 13px;
 }
 
-.remove-btn {
-    width: 38px;
-    height: 38px;
-    border: none;
-    border-radius: 10px;
-    background: rgba(255,70,70,.1);
-    color: #e74c3c;
-    cursor: pointer;
+/* PRICING */
+
+.pricing-screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    padding: 35px 20px;
 }
 
-.add-btn {
-    margin: 5px 0 15px;
-    padding: 10px 14px;
-    border-radius: 11px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-    font-weight: 700;
-}
-
-/* TIMER */
-
-.timer-display {
-    text-align: center;
-    font-size: 72px;
-    font-weight: 850;
-    letter-spacing: -3px;
-    margin: 25px 0;
-}
-
-.timer-controls {
-    display: flex;
-    gap: 10px;
-}
-
-.timer-controls button {
-    flex: 1;
-}
-
-/* ASSIGNMENTS */
-
-.assignment {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    margin-bottom: 10px;
-}
-
-.assignment.done {
-    opacity: .5;
-    text-decoration: line-through;
-}
-
-.assignment-info {
-    flex: 1;
-}
-
-.assignment-info strong {
+.pricing-screen.show {
     display: block;
 }
 
-.assignment-info span {
-    color: var(--muted);
-    font-size: 12px;
+.pricing-box {
+    max-width: 1050px;
+    margin: auto;
+    background: var(--surface-solid);
+    border-radius: 28px;
+    padding: 30px;
+    animation: popup .25s ease;
 }
 
-.delete-btn {
+.pricing-top {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pricing-top h2 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+}
+
+.pricing-top p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.pricing-close {
+    float: right;
     border: none;
     background: transparent;
-    color: #e74c3c;
+    color: var(--muted);
+    font-size: 23px;
     cursor: pointer;
 }
 
-/* FLASHCARDS */
-
-.flashcard {
-    min-height: 180px;
-    border: 1px solid var(--border);
-    border-radius: 18px;
+.plans {
     display: grid;
-    place-items: center;
-    text-align: center;
-    padding: 25px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    background: rgba(109,93,252,.05);
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
-.flashcard h3 {
-    font-size: 25px;
+.plan {
+    padding: 27px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: var(--surface);
+}
+
+.plan.featured {
+    border: 2px solid var(--primary);
+    position: relative;
+}
+
+.popular {
+    position: absolute;
+    top: -12px;
+    left: 22px;
+    background: linear-gradient(135deg,var(--primary),var(--purple));
+    color: white;
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.plan h3 {
+    font-size: 20px;
+}
+
+.price {
+    font-size: 38px;
+    font-weight: 900;
+    margin: 12px 0 18px;
+}
+
+.price small {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.features {
+    list-style: none;
+    margin: 18px 0;
+}
+
+.features li {
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.features li::before {
+    content: "✓";
+    color: var(--green);
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+.plan button {
+    width: 100%;
 }
 
 /* FOOTER */
 
 footer {
     border-top: 1px solid var(--border);
-    text-align: center;
     padding: 35px 20px;
+    text-align: center;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* MOBILE */
 
-@media (max-width: 850px) {
-    .tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .weighted-row {
-        grid-template-columns: 1fr 1fr;
+@media(max-width:1000px) {
+    .tool-grid {
+        grid-template-columns: repeat(3,1fr);
     }
 }
 
-@media (max-width: 600px) {
+@media(max-width:750px) {
+    .tool-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .dashboard-card {
+        display: block;
+    }
+
+    .stats {
+        margin-top: 20px;
+        justify-content: space-around;
+    }
+
+    .plans {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:560px) {
     .nav-link {
         display: none;
     }
 
     .hero {
-        padding-top: 60px;
+        padding-top: 55px;
     }
 
     .hero h1 {
         letter-spacing: -2.5px;
     }
 
-    .hero p {
-        font-size: 16px;
-    }
-
-    .tools-grid {
+    .tool-grid {
         grid-template-columns: 1fr;
     }
 
-    .section-heading {
-        display: block;
+    .two,
+    .three {
+        grid-template-columns: 1fr;
     }
 
-    .tool-count {
-        display: block;
-        margin-top: 8px;
-    }
-
-    .tool-box {
+    .tool-panel,
+    .pricing-box {
         padding: 21px;
     }
 
-    .row {
-        grid-template-columns: 1fr;
-    }
-
-    .timer-display {
-        font-size: 58px;
+    .pricing-top h2 {
+        font-size: 30px;
     }
 }
 </style>
@@ -658,195 +842,609 @@ footer {
 <body>
 
 <!-- NAVBAR -->
+
 <nav class="navbar">
     <div class="nav-inner">
+
         <div class="logo">
             <div class="logo-icon">✦</div>
             StudentTools
         </div>
 
-        <div class="nav-actions">
-            <a href="#tools" class="nav-link">Tools</a>
-            <button class="theme-btn" onclick="toggleDark()" id="themeBtn">☾</button>
+        <div class="nav-right">
+            <a class="nav-link" href="#tools">Tools</a>
+
+            <button class="pro-nav" onclick="openPricing()">
+                ⭐ Pro
+            </button>
+
+            <button class="nav-btn" onclick="toggleDark()" id="themeBtn">
+                ☾
+            </button>
         </div>
+
     </div>
 </nav>
 
+
 <!-- HERO -->
+
 <section class="hero">
 
-    <div class="hero-badge">✦ Built for students</div>
+    <div class="badge">
+        ✦ 20+ student tools
+    </div>
 
     <h1>
-        School just got
-        <span class="gradient-text">a little easier.</span>
+        Everything students need to
+        <span class="gradient">get ahead.</span>
     </h1>
 
     <p>
-        Free, simple tools to help you calculate grades,
-        stay organized, study smarter, and get things done.
+        Calculate grades, plan your studying, organize assignments,
+        create flashcards and more — all in one place.
     </p>
 
-    <div class="hero-actions">
-        <button class="primary-btn" onclick="document.getElementById('tools').scrollIntoView()">
+    <div class="hero-buttons">
+
+        <button class="primary"
+            onclick="document.getElementById('tools').scrollIntoView()">
             Explore Tools →
         </button>
 
-        <button class="secondary-btn" onclick="toggleDark()">
-            ◐ Toggle Theme
+        <button class="secondary" onclick="openPricing()">
+            ⭐ See StudentTools Pro
         </button>
+
     </div>
 
-    <div class="search-wrap">
-        <span class="search-icon">⌕</span>
+    <div class="search-container">
+        <span>⌕</span>
         <input
             class="search"
             id="search"
-            placeholder="Search for a tool..."
+            placeholder="Search tools..."
             oninput="searchTools()"
         >
     </div>
 
 </section>
 
-<!-- TOOLS -->
-<section class="tools-section" id="tools">
 
-    <div class="section-heading">
-        <div>
-            <h2>Student tools</h2>
-            <p>Everything you need in one place.</p>
+<!-- DASHBOARD -->
+
+<section class="dashboard">
+
+    <div class="dashboard-card">
+
+        <div class="dashboard-left">
+
+            <div class="avatar">S</div>
+
+            <div>
+                <h3 id="planName">Student Dashboard</h3>
+                <p id="planDescription">
+                    You're using the free version of StudentTools.
+                </p>
+            </div>
+
         </div>
 
-        <span class="tool-count" id="toolCount">11 tools</span>
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="toolNumber">20+</strong>
+                <span>Tools</span>
+            </div>
+
+            <div class="stat">
+                <strong>100%</strong>
+                <span>Free tools</span>
+            </div>
+
+            <div class="stat">
+                <strong id="proStatus">FREE</strong>
+                <span>Plan</span>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="tools-grid" id="toolsGrid">
+</section>
 
-        <div class="tool-card" data-name="gpa grade point average" onclick="openTool('gpa')">
+
+<!-- PRO BANNER -->
+
+<div class="pro-banner" id="proBanner">
+
+    <div class="pro-banner-inner">
+
+        <h2>🚀 Upgrade your student experience.</h2>
+
+        <p>
+            Get access to our most powerful study, grade and planning tools
+            with StudentTools Pro.
+        </p>
+
+        <button onclick="openPricing()">
+            View Pro →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOOLS -->
+
+<section class="tools" id="tools">
+
+    <div class="section-head">
+
+        <div>
+            <h2>Student Tools</h2>
+            <p>Pick a tool and get started.</p>
+        </div>
+
+        <span class="tool-count" id="toolCount">
+            20 tools
+        </span>
+
+    </div>
+
+
+    <!-- FREE -->
+
+    <div class="category-title">
+        <h3>Free Tools</h3>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="tool-grid">
+
+        <div class="tool-card" data-name="gpa calculator grade point average"
+             onclick="openTool('gpa')">
             <div class="tool-icon">🎓</div>
             <h3>GPA Calculator</h3>
-            <p>Calculate your GPA quickly and easily.</p>
-            <span class="tool-arrow">→</span>
+            <p>Calculate your GPA from your class grades.</p>
+            <span class="arrow">→</span>
         </div>
 
-        <div class="tool-card" data-name="weighted gpa honors ap" onclick="openTool('weighted')">
-            <div class="tool-icon">⭐</div>
-            <h3>Weighted GPA</h3>
-            <p>Calculate your weighted GPA with honors and AP classes.</p>
-            <span class="tool-arrow">→</span>
-        </div>
-
-        <div class="tool-card" data-name="final grade calculator" onclick="openTool('final')">
-            <div class="tool-icon">📊</div>
-            <h3>Final Grade</h3>
-            <p>Find the grade you need on your final exam.</p>
-            <span class="tool-arrow">→</span>
-        </div>
-
-        <div class="tool-card" data-name="percentage percent calculator" onclick="openTool('percentage')">
+        <div class="tool-card" data-name="percentage calculator percent"
+             onclick="openTool('percentage')">
             <div class="tool-icon">％</div>
             <h3>Percentage Calculator</h3>
-            <p>Calculate percentages instantly.</p>
-            <span class="tool-arrow">→</span>
+            <p>Calculate percentages quickly.</p>
+            <span class="arrow">→</span>
         </div>
 
-        <div class="tool-card" data-name="percentage change increase decrease" onclick="openTool('change')">
-            <div class="tool-icon">↗</div>
-            <h3>Percentage Change</h3>
-            <p>Calculate increases and decreases.</p>
-            <span class="tool-arrow">→</span>
-        </div>
-
-        <div class="tool-card" data-name="average mean calculator" onclick="openTool('average')">
+        <div class="tool-card" data-name="average calculator mean"
+             onclick="openTool('average')">
             <div class="tool-icon">∑</div>
             <h3>Average Calculator</h3>
             <p>Find the average of multiple numbers.</p>
-            <span class="tool-arrow">→</span>
+            <span class="arrow">→</span>
         </div>
 
-        <div class="tool-card" data-name="word counter writing words" onclick="openTool('words')">
+        <div class="tool-card" data-name="final grade calculator"
+             onclick="openTool('final')">
+            <div class="tool-icon">📊</div>
+            <h3>Final Grade</h3>
+            <p>Find the score you need on your final.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card" data-name="word counter words characters"
+             onclick="openTool('words')">
             <div class="tool-icon">Aa</div>
             <h3>Word Counter</h3>
-            <p>Count words and characters in your writing.</p>
-            <span class="tool-arrow">→</span>
+            <p>Count words and characters instantly.</p>
+            <span class="arrow">→</span>
         </div>
 
-        <div class="tool-card" data-name="study timer pomodoro" onclick="openTool('timer')">
+        <div class="tool-card" data-name="study timer pomodoro"
+             onclick="openTool('timer')">
             <div class="tool-icon">⏱</div>
             <h3>Study Timer</h3>
-            <p>Focus with a simple study timer.</p>
-            <span class="tool-arrow">→</span>
+            <p>Focus using a simple study timer.</p>
+            <span class="arrow">→</span>
         </div>
 
-        <div class="tool-card" data-name="exam countdown test" onclick="openTool('countdown')">
-            <div class="tool-icon">⌛</div>
-            <h3>Exam Countdown</h3>
-            <p>See exactly how much time is left.</p>
-            <span class="tool-arrow">→</span>
-        </div>
-
-        <div class="tool-card" data-name="assignment homework tracker" onclick="openTool('assignments')">
+        <div class="tool-card" data-name="assignment tracker homework"
+             onclick="openTool('assignments')">
             <div class="tool-icon">✓</div>
             <h3>Assignment Tracker</h3>
-            <p>Keep track of your assignments.</p>
-            <span class="tool-arrow">→</span>
+            <p>Keep your homework organized.</p>
+            <span class="arrow">→</span>
         </div>
 
-        <div class="tool-card" data-name="flashcards study cards" onclick="openTool('flashcards')">
+        <div class="tool-card" data-name="flashcards study cards"
+             onclick="openTool('flashcards')">
             <div class="tool-icon">▣</div>
-            <h3>Flashcard Maker</h3>
-            <p>Create simple flashcards for studying.</p>
-            <span class="tool-arrow">→</span>
+            <h3>Flashcards</h3>
+            <p>Create cards to study important topics.</p>
+            <span class="arrow">→</span>
         </div>
 
     </div>
+
+
+    <!-- PRO -->
+
+    <div class="category-title">
+        <h3>StudentTools Pro</h3>
+        <div class="category-line"></div>
+    </div>
+
+    <div class="tool-grid">
+
+        <div class="tool-card pro-card" data-name="weighted gpa honors ap"
+             onclick="openTool('weighted')">
+            <div class="tool-icon">⭐</div>
+            <span class="pro-label">PRO</span>
+            <h3>Weighted GPA</h3>
+            <p>Calculate GPA with Honors and AP classes.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="grade planner grades"
+             onclick="openTool('gradeplanner')">
+            <div class="tool-icon">📈</div>
+            <span class="pro-label">PRO</span>
+            <h3>Grade Planner</h3>
+            <p>Plan what grades you need to reach your goal.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="gpa projection forecast"
+             onclick="openTool('projection')">
+            <div class="tool-icon">🔮</div>
+            <span class="pro-label">PRO</span>
+            <h3>GPA Projection</h3>
+            <p>See where your GPA could end up.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="study planner schedule"
+             onclick="openTool('studyplanner')">
+            <div class="tool-icon">📚</div>
+            <span class="pro-label">PRO</span>
+            <h3>Study Planner</h3>
+            <p>Build a personalized study schedule.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="grade goal target"
+             onclick="openTool('gradegoal')">
+            <div class="tool-icon">🎯</div>
+            <span class="pro-label">PRO</span>
+            <h3>Grade Goal</h3>
+            <p>Calculate the grades needed for your target.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="semester planner school"
+             onclick="openTool('semester')">
+            <div class="tool-icon">📅</div>
+            <span class="pro-label">PRO</span>
+            <h3>Semester Planner</h3>
+            <p>Organize important dates for the semester.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="exam countdown test"
+             onclick="openTool('countdown')">
+            <div class="tool-icon">⌛</div>
+            <span class="pro-label">PRO</span>
+            <h3>Exam Countdown</h3>
+            <p>Count down to your next big test.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="percentage change increase decrease"
+             onclick="openTool('change')">
+            <div class="tool-icon">↗</div>
+            <span class="pro-label">PRO</span>
+            <h3>Percentage Change</h3>
+            <p>Calculate increases and decreases.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="test score calculator"
+             onclick="openTool('testscore')">
+            <div class="tool-icon">📝</div>
+            <span class="pro-label">PRO</span>
+            <h3>Test Score Calculator</h3>
+            <p>Calculate your score from questions correct.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="assignment grade calculator"
+             onclick="openTool('assignmentgrade')">
+            <div class="tool-icon">📋</div>
+            <span class="pro-label">PRO</span>
+            <h3>Assignment Grade</h3>
+            <p>Calculate points and percentages.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="tip calculator math"
+             onclick="openTool('tip')">
+            <div class="tool-icon">💡</div>
+            <span class="pro-label">PRO</span>
+            <h3>Quick Math</h3>
+            <p>Calculate common school math problems.</p>
+            <span class="arrow">→</span>
+        </div>
+
+        <div class="tool-card pro-card" data-name="days between date calendar"
+             onclick="openTool('days')">
+            <div class="tool-icon">🗓</div>
+            <span class="pro-label">PRO</span>
+            <h3>Date Calculator</h3>
+            <p>Calculate the number of days between dates.</p>
+            <span class="arrow">→</span>
+        </div>
+
+    </div>
+
 </section>
 
-<!-- TOOL AREA -->
-<section class="tool-area" id="toolArea">
-
-    <button class="back-btn" onclick="closeTool()">← Back to all tools</button>
-
-    <div class="tool-box" id="toolContent"></div>
-
-</section>
 
 <footer>
-    <p>© 2026 StudentTools · Made for students, by students.</p>
+    © 2026 StudentTools · Built for students.
 </footer>
+
+
+<!-- TOOL SCREEN -->
+
+<div class="tool-screen" id="toolScreen">
+
+    <div class="tool-panel">
+
+        <button class="close" onclick="closeTool()">×</button>
+
+        <div id="toolContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- PRICING SCREEN -->
+
+<div class="pricing-screen" id="pricingScreen">
+
+    <div class="pricing-box">
+
+        <button class="pricing-close" onclick="closePricing()">×</button>
+
+        <div class="pricing-top">
+
+            <div class="badge">⭐ StudentTools Pro</div>
+
+            <h2>Do more. Stress less.</h2>
+
+            <p>
+                Unlock the tools designed to help students stay ahead.
+            </p>
+
+        </div>
+
+        <div class="plans">
+
+            <!-- FREE -->
+
+            <div class="plan">
+
+                <h3>Free</h3>
+
+                <div class="price">
+                    $0
+                    <small>forever</small>
+                </div>
+
+                <p style="color:var(--muted);font-size:13px;">
+                    Everything you need to get started.
+                </p>
+
+                <ul class="features">
+                    <li>GPA Calculator</li>
+                    <li>Percentage Calculator</li>
+                    <li>Average Calculator</li>
+                    <li>Final Grade Calculator</li>
+                    <li>Word Counter</li>
+                    <li>Study Timer</li>
+                    <li>Assignment Tracker</li>
+                    <li>Flashcards</li>
+                </ul>
+
+                <button class="secondary">
+                    Current Plan
+                </button>
+
+            </div>
+
+
+            <!-- PRO -->
+
+            <div class="plan featured">
+
+                <div class="popular">MOST POPULAR</div>
+
+                <h3>StudentTools Pro ⭐</h3>
+
+                <div class="price">
+                    $4.99
+                    <small>/ month</small>
+                </div>
+
+                <p style="color:var(--muted);font-size:13px;">
+                    For students who want the complete toolkit.
+                </p>
+
+                <ul class="features">
+                    <li>Everything in Free</li>
+                    <li>Weighted GPA</li>
+                    <li>Grade Planner</li>
+                    <li>GPA Projection</li>
+                    <li>Study Planner</li>
+                    <li>Grade Goal Calculator</li>
+                    <li>Semester Planner</li>
+                    <li>Exam Countdown</li>
+                    <li>Test Score Calculator</li>
+                    <li>Assignment Grade Calculator</li>
+                    <li>Date Calculator</li>
+                    <li>More tools added regularly</li>
+                </ul>
+
+                <button class="primary" id="upgradeBtn" onclick="activatePro()">
+                    ⭐ Get StudentTools Pro
+                </button>
+
+            </div>
+
+        </div>
+
+        <p style="text-align:center;color:var(--muted);font-size:11px;margin-top:20px;">
+            Demo upgrade for the website prototype. No payment is processed.
+        </p>
+
+    </div>
+
+</div>
+
 
 <script>
 
-/* DARK MODE */
+/* =========================
+   DARK MODE
+========================= */
 
 function toggleDark() {
+
     document.body.classList.toggle("dark");
 
-    const isDark = document.body.classList.contains("dark");
+    const dark =
+        document.body.classList.contains("dark");
 
-    localStorage.setItem("studenttools-dark", isDark);
+    localStorage.setItem("studenttools-dark", dark);
 
-    document.getElementById("themeBtn").textContent = isDark ? "☀" : "☾";
+    document.getElementById("themeBtn").textContent =
+        dark ? "☀" : "☾";
 }
 
-if (localStorage.getItem("studenttools-dark") === "true") {
+if (
+    localStorage.getItem("studenttools-dark") === "true"
+) {
     document.body.classList.add("dark");
     document.getElementById("themeBtn").textContent = "☀";
 }
 
 
-/* TOOL DATA */
+/* =========================
+   PRO SYSTEM
+========================= */
+
+let isPro =
+    localStorage.getItem("studenttools-pro") === "true";
+
+function updateProUI() {
+
+    if (isPro) {
+
+        document.body.classList.add("pro");
+
+        document.getElementById("planName").textContent =
+            "StudentTools Pro ⭐";
+
+        document.getElementById("planDescription").textContent =
+            "You have access to all StudentTools tools.";
+
+        document.getElementById("proStatus").textContent =
+            "PRO";
+
+        document.getElementById("proBanner").style.display =
+            "none";
+
+        document.getElementById("upgradeBtn").textContent =
+            "✓ Pro Activated";
+
+    }
+
+}
+
+updateProUI();
+
+
+function activatePro() {
+
+    /*
+      DEMO ONLY.
+
+      This unlocks Pro in the browser so you can
+      test the interface. It does not process money.
+    */
+
+    isPro = true;
+
+    localStorage.setItem(
+        "studenttools-pro",
+        "true"
+    );
+
+    updateProUI();
+
+    closePricing();
+
+    alert(
+        "StudentTools Pro is activated in demo mode! ⭐"
+    );
+}
+
+
+/* =========================
+   PRICING
+========================= */
+
+function openPricing() {
+
+    document
+        .getElementById("pricingScreen")
+        .classList.add("show");
+
+    document.body.style.overflow = "hidden";
+}
+
+function closePricing() {
+
+    document
+        .getElementById("pricingScreen")
+        .classList.remove("show");
+
+    document.body.style.overflow = "";
+}
+
+
+/* =========================
+   TOOL SYSTEM
+========================= */
 
 const tools = {
+
 
 gpa: {
     icon: "🎓",
     title: "GPA Calculator",
     description: "Calculate your GPA using your class grades.",
+    free: true,
+
     html: `
-        <div class="row">
-            <div class="input-group">
+
+        <div class="two">
+
+            <div class="field">
                 <label>Grade 1</label>
                 <select class="gpa-grade">
                     <option value="4">A</option>
@@ -857,7 +1455,7 @@ gpa: {
                 </select>
             </div>
 
-            <div class="input-group">
+            <div class="field">
                 <label>Grade 2</label>
                 <select class="gpa-grade">
                     <option value="4">A</option>
@@ -867,26 +1465,266 @@ gpa: {
                     <option value="0">F</option>
                 </select>
             </div>
+
         </div>
 
-        <div id="gpaExtra"></div>
+        <div id="gpaMore"></div>
 
-        <button class="add-btn" onclick="addGpaClass()">+ Add Class</button>
-        <button class="calc-btn" onclick="calculateGPA()">Calculate GPA</button>
+        <button class="secondary" style="width:100%;margin-bottom:10px"
+                onclick="addGpa()">
+            + Add Class
+        </button>
+
+        <button class="calc" onclick="calcGPA()">
+            Calculate GPA
+        </button>
 
         <div class="result" id="gpaResult" style="display:none"></div>
     `
 },
 
+
+percentage: {
+    icon: "％",
+    title: "Percentage Calculator",
+    description: "Find what percentage one number is of another.",
+    free: true,
+
+    html: `
+
+        <div class="field">
+            <label>Number</label>
+            <input class="input" id="percentA" type="number"
+                   placeholder="25">
+        </div>
+
+        <div class="field">
+            <label>Total</label>
+            <input class="input" id="percentB" type="number"
+                   placeholder="100">
+        </div>
+
+        <button class="calc" onclick="calcPercentage()">
+            Calculate
+        </button>
+
+        <div class="result" id="percentResult"
+             style="display:none"></div>
+    `
+},
+
+
+average: {
+    icon: "∑",
+    title: "Average Calculator",
+    description: "Find the average of multiple numbers.",
+    free: true,
+
+    html: `
+
+        <div class="field">
+            <label>Numbers</label>
+            <input class="input" id="averageInput"
+                   placeholder="90, 85, 92, 88">
+        </div>
+
+        <button class="calc" onclick="calcAverage()">
+            Calculate Average
+        </button>
+
+        <div class="result" id="averageResult"
+             style="display:none"></div>
+    `
+},
+
+
+final: {
+    icon: "📊",
+    title: "Final Grade Calculator",
+    description: "Find the grade you need on your final exam.",
+    free: true,
+
+    html: `
+
+        <div class="field">
+            <label>Current Grade (%)</label>
+            <input class="input" id="currentGrade"
+                   type="number" placeholder="87">
+        </div>
+
+        <div class="field">
+            <label>Final Exam Weight (%)</label>
+            <input class="input" id="finalWeight"
+                   type="number" placeholder="20">
+        </div>
+
+        <div class="field">
+            <label>Desired Overall Grade (%)</label>
+            <input class="input" id="desiredGrade"
+                   type="number" placeholder="90">
+        </div>
+
+        <button class="calc" onclick="calcFinal()">
+            Calculate Required Grade
+        </button>
+
+        <div class="result" id="finalResult"
+             style="display:none"></div>
+    `
+},
+
+
+words: {
+    icon: "Aa",
+    title: "Word Counter",
+    description: "Count words and characters.",
+    free: true,
+
+    html: `
+
+        <div class="field">
+            <label>Your Text</label>
+            <textarea id="wordText"
+                      rows="10"
+                      placeholder="Start typing..."></textarea>
+        </div>
+
+        <div class="two">
+
+            <div class="result">
+                Words
+                <strong id="wordCount">0</strong>
+            </div>
+
+            <div class="result">
+                Characters
+                <strong id="charCount">0</strong>
+            </div>
+
+        </div>
+    `
+},
+
+
+timer: {
+    icon: "⏱",
+    title: "Study Timer",
+    description: "Focus with a simple study timer.",
+    free: true,
+
+    html: `
+
+        <div style="text-align:center">
+
+            <div id="timerDisplay"
+                 style="font-size:70px;font-weight:900;margin:25px 0">
+                25:00
+            </div>
+
+            <div class="field">
+                <label>Minutes</label>
+                <input class="input"
+                       id="timerMinutes"
+                       type="number"
+                       value="25">
+            </div>
+
+            <div class="two">
+
+                <button class="calc"
+                        onclick="startTimer()">
+                    Start
+                </button>
+
+                <button class="secondary"
+                        onclick="resetTimer()">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+    `
+},
+
+
+assignments: {
+    icon: "✓",
+    title: "Assignment Tracker",
+    description: "Keep track of your homework.",
+    free: true,
+
+    html: `
+
+        <div class="two">
+
+            <input class="input"
+                   id="assignmentName"
+                   placeholder="Assignment name">
+
+            <input class="input"
+                   id="assignmentDate"
+                   type="date">
+
+        </div>
+
+        <button class="calc"
+                onclick="addAssignment()">
+            Add Assignment
+        </button>
+
+        <div id="assignmentList"
+             style="margin-top:20px"></div>
+    `
+},
+
+
+flashcards: {
+    icon: "▣",
+    title: "Flashcards",
+    description: "Create cards to help you study.",
+    free: true,
+
+    html: `
+
+        <div class="two">
+
+            <input class="input"
+                   id="cardQuestion"
+                   placeholder="Question">
+
+            <input class="input"
+                   id="cardAnswer"
+                   placeholder="Answer">
+
+        </div>
+
+        <button class="calc"
+                onclick="addFlashcard()">
+            Add Flashcard
+        </button>
+
+        <div id="flashcardList"
+             style="margin-top:20px"></div>
+    `
+},
+
+
 weighted: {
     icon: "⭐",
     title: "Weighted GPA",
-    description: "Calculate GPA using regular, honors, and AP classes.",
+    description: "Calculate GPA with Honors and AP classes.",
+    free: false,
+
     html: `
+
         <div id="weightedRows">
 
-            <div class="weighted-row">
-                <input class="input" placeholder="Class">
+            <div class="three weighted-row">
+
+                <input class="input"
+                       placeholder="Class">
+
                 <select class="weighted-grade">
                     <option value="4">A</option>
                     <option value="3">B</option>
@@ -894,233 +1732,523 @@ weighted: {
                     <option value="1">D</option>
                     <option value="0">F</option>
                 </select>
+
                 <select class="weight">
                     <option value="0">Regular</option>
-                    <option value="0.5">Honors</option>
+                    <option value=".5">Honors</option>
                     <option value="1">AP</option>
                 </select>
-                <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
+
             </div>
 
         </div>
 
-        <button class="add-btn" onclick="addWeighted()">+ Add Class</button>
-        <button class="calc-btn" onclick="calculateWeighted()">Calculate Weighted GPA</button>
+        <button class="secondary"
+                style="width:100%;margin-bottom:10px"
+                onclick="addWeighted()">
+            + Add Class
+        </button>
 
-        <div class="result" id="weightedResult" style="display:none"></div>
+        <button class="calc"
+                onclick="calcWeighted()">
+            Calculate Weighted GPA
+        </button>
+
+        <div class="result"
+             id="weightedResult"
+             style="display:none"></div>
     `
 },
 
-final: {
-    icon: "📊",
-    title: "Final Grade Calculator",
-    description: "Find out what you need on your final exam.",
+
+gradeplanner: {
+    icon: "📈",
+    title: "Grade Planner",
+    description: "Plan the grades you need to reach your target.",
+    free: false,
+
     html: `
-        <div class="input-group">
-            <label>Current Grade (%)</label>
-            <input class="input" id="currentGrade" type="number" placeholder="Example: 87">
-        </div>
 
-        <div class="input-group">
-            <label>Final Exam Weight (%)</label>
-            <input class="input" id="finalWeight" type="number" placeholder="Example: 20">
-        </div>
+        <div class="two">
 
-        <div class="input-group">
-            <label>Desired Overall Grade (%)</label>
-            <input class="input" id="desiredGrade" type="number" placeholder="Example: 90">
-        </div>
-
-        <button class="calc-btn" onclick="calculateFinal()">Calculate Required Grade</button>
-
-        <div class="result" id="finalResult" style="display:none"></div>
-    `
-},
-
-percentage: {
-    icon: "％",
-    title: "Percentage Calculator",
-    description: "Find what percentage one number is of another.",
-    html: `
-        <div class="input-group">
-            <label>What is</label>
-            <input class="input" id="percentA" type="number" placeholder="Example: 25">
-        </div>
-
-        <div class="input-group">
-            <label>Percent of</label>
-            <input class="input" id="percentB" type="number" placeholder="Example: 100">
-        </div>
-
-        <button class="calc-btn" onclick="calculatePercentage()">Calculate</button>
-
-        <div class="result" id="percentageResult" style="display:none"></div>
-    `
-},
-
-change: {
-    icon: "↗",
-    title: "Percentage Change",
-    description: "Calculate the percentage increase or decrease.",
-    html: `
-        <div class="input-group">
-            <label>Original Value</label>
-            <input class="input" id="oldValue" type="number">
-        </div>
-
-        <div class="input-group">
-            <label>New Value</label>
-            <input class="input" id="newValue" type="number">
-        </div>
-
-        <button class="calc-btn" onclick="calculateChange()">Calculate Change</button>
-
-        <div class="result" id="changeResult" style="display:none"></div>
-    `
-},
-
-average: {
-    icon: "∑",
-    title: "Average Calculator",
-    description: "Enter numbers separated by commas.",
-    html: `
-        <div class="input-group">
-            <label>Numbers</label>
-            <input class="input" id="averageInput" placeholder="Example: 90, 85, 92, 88">
-        </div>
-
-        <button class="calc-btn" onclick="calculateAverage()">Calculate Average</button>
-
-        <div class="result" id="averageResult" style="display:none"></div>
-    `
-},
-
-words: {
-    icon: "Aa",
-    title: "Word Counter",
-    description: "Count words and characters in your writing.",
-    html: `
-        <div class="input-group">
-            <label>Your text</label>
-            <textarea id="wordText" rows="10" placeholder="Start typing..."></textarea>
-        </div>
-
-        <div class="result" id="wordResult">
-            Words: <strong id="wordNumber">0</strong>
-            Characters: <strong id="charNumber">0</strong>
-        </div>
-    `
-},
-
-timer: {
-    icon: "⏱",
-    title: "Study Timer",
-    description: "Focus and study without distractions.",
-    html: `
-        <div class="timer-display" id="timerDisplay">25:00</div>
-
-        <div class="row">
-            <div class="input-group">
-                <label>Minutes</label>
-                <input class="input" id="timerMinutes" type="number" value="25" min="1">
+            <div class="field">
+                <label>Current Grade (%)</label>
+                <input class="input"
+                       id="plannerCurrent"
+                       type="number"
+                       placeholder="85">
             </div>
 
-            <div></div>
+            <div class="field">
+                <label>Target Grade (%)</label>
+                <input class="input"
+                       id="plannerTarget"
+                       type="number"
+                       placeholder="90">
+            </div>
+
         </div>
 
-        <div class="timer-controls">
-            <button class="calc-btn" onclick="startTimer()">Start</button>
-            <button class="secondary-btn" onclick="pauseTimer()">Pause</button>
-            <button class="secondary-btn" onclick="resetTimer()">Reset</button>
+        <div class="field">
+            <label>Assignments Remaining</label>
+            <input class="input"
+                   id="plannerAssignments"
+                   type="number"
+                   placeholder="5">
         </div>
+
+        <button class="calc"
+                onclick="gradePlanner()">
+            Create Grade Plan
+        </button>
+
+        <div class="result"
+             id="plannerResult"
+             style="display:none"></div>
     `
 },
+
+
+projection: {
+    icon: "🔮",
+    title: "GPA Projection",
+    description: "Estimate your GPA after future classes.",
+    free: false,
+
+    html: `
+
+        <div class="two">
+
+            <div class="field">
+                <label>Current GPA</label>
+                <input class="input"
+                       id="projectionGPA"
+                       type="number"
+                       step=".01"
+                       placeholder="3.2">
+            </div>
+
+            <div class="field">
+                <label>Completed Classes</label>
+                <input class="input"
+                       id="projectionClasses"
+                       type="number"
+                       placeholder="10">
+            </div>
+
+        </div>
+
+        <div class="two">
+
+            <div class="field">
+                <label>Expected Future GPA</label>
+                <input class="input"
+                       id="futureGPA"
+                       type="number"
+                       step=".01"
+                       placeholder="3.8">
+            </div>
+
+            <div class="field">
+                <label>Future Classes</label>
+                <input class="input"
+                       id="futureClasses"
+                       type="number"
+                       placeholder="5">
+            </div>
+
+        </div>
+
+        <button class="calc"
+                onclick="projection()">
+            Project GPA
+        </button>
+
+        <div class="result"
+             id="projectionResult"
+             style="display:none"></div>
+    `
+},
+
+
+studyplanner: {
+    icon: "📚",
+    title: "Study Planner",
+    description: "Build a simple study schedule.",
+    free: false,
+
+    html: `
+
+        <div class="field">
+            <label>Subject</label>
+            <input class="input"
+                   id="studySubject"
+                   placeholder="Example: Algebra 2">
+        </div>
+
+        <div class="two">
+
+            <div class="field">
+                <label>Hours Available</label>
+                <input class="input"
+                       id="studyHours"
+                       type="number"
+                       placeholder="3">
+            </div>
+
+            <div class="field">
+                <label>Number of Topics</label>
+                <input class="input"
+                       id="studyTopics"
+                       type="number"
+                       placeholder="4">
+            </div>
+
+        </div>
+
+        <button class="calc"
+                onclick="studyPlanner()">
+            Build Study Plan
+        </button>
+
+        <div class="result"
+             id="studyResult"
+             style="display:none"></div>
+    `
+},
+
+
+gradegoal: {
+    icon: "🎯",
+    title: "Grade Goal Calculator",
+    description: "Calculate what score you need to reach your target.",
+    free: false,
+
+    html: `
+
+        <div class="field">
+            <label>Current Grade</label>
+            <input class="input"
+                   id="goalCurrent"
+                   type="number"
+                   placeholder="82">
+        </div>
+
+        <div class="field">
+            <label>Target Grade</label>
+            <input class="input"
+                   id="goalTarget"
+                   type="number"
+                   placeholder="90">
+        </div>
+
+        <div class="field">
+            <label>Remaining Work Weight (%)</label>
+            <input class="input"
+                   id="goalWeight"
+                   type="number"
+                   placeholder="40">
+        </div>
+
+        <button class="calc"
+                onclick="gradeGoal()">
+            Calculate Goal
+        </button>
+
+        <div class="result"
+             id="goalResult"
+             style="display:none"></div>
+    `
+},
+
+
+semester: {
+    icon: "📅",
+    title: "Semester Planner",
+    description: "Add important school dates.",
+    free: false,
+
+    html: `
+
+        <div class="two">
+
+            <input class="input"
+                   id="semesterEvent"
+                   placeholder="Exam / Project / Event">
+
+            <input class="input"
+                   id="semesterDate"
+                   type="date">
+
+        </div>
+
+        <button class="calc"
+                onclick="addSemesterEvent()">
+            Add Event
+        </button>
+
+        <div id="semesterList"
+             style="margin-top:20px"></div>
+    `
+},
+
 
 countdown: {
     icon: "⌛",
     title: "Exam Countdown",
-    description: "Set a date and see how much time remains.",
+    description: "See exactly how long until your exam.",
+    free: false,
+
     html: `
-        <div class="input-group">
+
+        <div class="field">
             <label>Exam Date & Time</label>
-            <input class="input" id="examDate" type="datetime-local">
+            <input class="input"
+                   id="examDate"
+                   type="datetime-local">
         </div>
 
-        <button class="calc-btn" onclick="startCountdown()">Start Countdown</button>
+        <button class="calc"
+                onclick="startCountdown()">
+            Start Countdown
+        </button>
 
-        <div class="result" id="countdownResult">
-            Enter your exam date above.
+        <div class="result"
+             id="countdownResult">
+            Choose your exam date.
         </div>
     `
 },
 
-assignments: {
-    icon: "✓",
-    title: "Assignment Tracker",
-    description: "Save and track your homework.",
+
+change: {
+    icon: "↗",
+    title: "Percentage Change",
+    description: "Calculate percentage increases and decreases.",
+    free: false,
+
     html: `
-        <div class="row">
-            <input class="input" id="assignmentName" placeholder="Assignment name">
-            <input class="input" id="assignmentDate" type="date">
+
+        <div class="field">
+            <label>Original Value</label>
+            <input class="input"
+                   id="oldValue"
+                   type="number">
         </div>
 
-        <button class="calc-btn" onclick="addAssignment()">Add Assignment</button>
+        <div class="field">
+            <label>New Value</label>
+            <input class="input"
+                   id="newValue"
+                   type="number">
+        </div>
 
-        <div style="margin-top:20px" id="assignmentList"></div>
+        <button class="calc"
+                onclick="percentageChange()">
+            Calculate
+        </button>
+
+        <div class="result"
+             id="changeResult"
+             style="display:none"></div>
     `
 },
 
-flashcards: {
-    icon: "▣",
-    title: "Flashcard Maker",
-    description: "Create flashcards and test yourself.",
+
+testscore: {
+    icon: "📝",
+    title: "Test Score Calculator",
+    description: "Calculate your percentage from questions correct.",
+    free: false,
+
     html: `
-        <div class="row">
-            <input class="input" id="cardQuestion" placeholder="Question">
-            <input class="input" id="cardAnswer" placeholder="Answer">
+
+        <div class="two">
+
+            <div class="field">
+                <label>Questions Correct</label>
+                <input class="input"
+                       id="correct"
+                       type="number">
+            </div>
+
+            <div class="field">
+                <label>Total Questions</label>
+                <input class="input"
+                       id="totalQuestions"
+                       type="number">
+            </div>
+
         </div>
 
-        <button class="calc-btn" onclick="addFlashcard()">Add Flashcard</button>
+        <button class="calc"
+                onclick="testScore()">
+            Calculate Score
+        </button>
 
-        <div style="margin-top:20px" id="flashcardList"></div>
+        <div class="result"
+             id="testResult"
+             style="display:none"></div>
+    `
+},
+
+
+assignmentgrade: {
+    icon: "📋",
+    title: "Assignment Grade",
+    description: "Calculate a grade from points earned.",
+    free: false,
+
+    html: `
+
+        <div class="two">
+
+            <div class="field">
+                <label>Points Earned</label>
+                <input class="input"
+                       id="pointsEarned"
+                       type="number">
+            </div>
+
+            <div class="field">
+                <label>Points Possible</label>
+                <input class="input"
+                       id="pointsPossible"
+                       type="number">
+            </div>
+
+        </div>
+
+        <button class="calc"
+                onclick="assignmentGrade()">
+            Calculate Grade
+        </button>
+
+        <div class="result"
+             id="assignmentResult"
+             style="display:none"></div>
+    `
+},
+
+
+tip: {
+    icon: "💡",
+    title: "Quick Math",
+    description: "Calculate common math problems quickly.",
+    free: false,
+
+    html: `
+
+        <div class="field">
+            <label>Expression</label>
+            <input class="input"
+                   id="mathExpression"
+                   placeholder="Example: 25 * 4 + 10">
+        </div>
+
+        <button class="calc"
+                onclick="quickMath()">
+            Calculate
+        </button>
+
+        <div class="result"
+             id="mathResult"
+             style="display:none"></div>
+
+        <p style="color:var(--muted);font-size:11px;margin-top:10px;">
+            Supports basic +, -, ×, ÷ and parentheses.
+        </p>
+    `
+},
+
+
+days: {
+    icon: "🗓",
+    title: "Date Calculator",
+    description: "Find the number of days between two dates.",
+    free: false,
+
+    html: `
+
+        <div class="two">
+
+            <div class="field">
+                <label>Start Date</label>
+                <input class="input"
+                       id="startDate"
+                       type="date">
+            </div>
+
+            <div class="field">
+                <label>End Date</label>
+                <input class="input"
+                       id="endDate"
+                       type="date">
+            </div>
+
+        </div>
+
+        <button class="calc"
+                onclick="dateDifference()">
+            Calculate Days
+        </button>
+
+        <div class="result"
+             id="daysResult"
+             style="display:none"></div>
     `
 }
 
 };
 
 
-/* OPEN TOOL */
+/* =========================
+   OPEN TOOL
+========================= */
 
 function openTool(name) {
 
     const tool = tools[name];
 
-    document.getElementById("tools").style.display = "none";
-    document.querySelector(".hero").style.display = "none";
+    if (!tool) return;
 
-    const area = document.getElementById("toolArea");
+    if (!tool.free && !isPro) {
 
-    area.classList.add("active");
+        openPricing();
+
+        return;
+    }
 
     document.getElementById("toolContent").innerHTML = `
-        <div class="tool-top">
-            <div class="tool-top-icon">${tool.icon}</div>
+
+        <div class="tool-heading">
+
+            <div class="tool-heading-icon">
+                ${tool.icon}
+            </div>
+
             <div>
                 <h2>${tool.title}</h2>
                 <p>${tool.description}</p>
             </div>
+
         </div>
 
         ${tool.html}
     `;
 
-    area.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    document
+        .getElementById("toolScreen")
+        .classList.add("show");
+
+    document.body.style.overflow = "hidden";
 
     if (name === "words") {
-        document.getElementById("wordText").addEventListener("input", updateWords);
+
+        document
+            .getElementById("wordText")
+            .addEventListener("input", updateWords);
+
     }
 
     if (name === "assignments") {
@@ -1130,42 +2258,60 @@ function openTool(name) {
     if (name === "flashcards") {
         renderFlashcards();
     }
+
+    if (name === "semester") {
+        renderSemester();
+    }
 }
 
 
-/* CLOSE TOOL */
+/* =========================
+   CLOSE TOOL
+========================= */
 
 function closeTool() {
 
-    document.getElementById("toolArea").classList.remove("active");
-    document.getElementById("tools").style.display = "";
-    document.querySelector(".hero").style.display = "";
+    document
+        .getElementById("toolScreen")
+        .classList.remove("show");
 
-    document.getElementById("tools").scrollIntoView({
-        behavior: "smooth"
-    });
+    document.body.style.overflow = "";
 }
 
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 function searchTools() {
 
-    const query = document.getElementById("search").value.toLowerCase().trim();
+    const query =
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase()
+            .trim();
 
-    const cards = document.querySelectorAll(".tool-card");
+    const cards =
+        document.querySelectorAll(".tool-card");
 
     let visible = 0;
 
     cards.forEach(card => {
 
-        const name = card.dataset.name;
+        const name =
+            card.dataset.name.toLowerCase();
 
         if (name.includes(query)) {
+
             card.style.display = "";
+
             visible++;
+
         } else {
+
             card.style.display = "none";
+
         }
 
     });
@@ -1175,18 +2321,23 @@ function searchTools() {
 }
 
 
-/* GPA */
+/* =========================
+   GPA
+========================= */
 
-function addGpaClass() {
+function addGpa() {
 
-    const extra = document.getElementById("gpaExtra");
+    const container =
+        document.getElementById("gpaMore");
 
-    const div = document.createElement("div");
+    const div =
+        document.createElement("div");
 
-    div.className = "input-group";
+    div.className = "field";
 
     div.innerHTML = `
         <label>Additional Grade</label>
+
         <select class="gpa-grade">
             <option value="4">A</option>
             <option value="3">B</option>
@@ -1196,21 +2347,24 @@ function addGpaClass() {
         </select>
     `;
 
-    extra.appendChild(div);
+    container.appendChild(div);
 }
 
-function calculateGPA() {
 
-    const grades = [...document.querySelectorAll(".gpa-grade")]
+function calcGPA() {
+
+    const grades =
+        [...document.querySelectorAll(".gpa-grade")]
         .map(x => Number(x.value));
 
-    if (!grades.length) return;
+    const total =
+        grades.reduce((a,b) => a+b,0);
 
-    const total = grades.reduce((a,b) => a+b, 0);
+    const gpa =
+        total / grades.length;
 
-    const gpa = total / grades.length;
-
-    const result = document.getElementById("gpaResult");
+    const result =
+        document.getElementById("gpaResult");
 
     result.style.display = "block";
 
@@ -1221,18 +2375,25 @@ function calculateGPA() {
 }
 
 
-/* WEIGHTED GPA */
+/* =========================
+   WEIGHTED GPA
+========================= */
 
 function addWeighted() {
 
-    const container = document.getElementById("weightedRows");
+    const container =
+        document.getElementById("weightedRows");
 
-    const row = document.createElement("div");
+    const row =
+        document.createElement("div");
 
-    row.className = "weighted-row";
+    row.className =
+        "three weighted-row";
 
     row.innerHTML = `
-        <input class="input" placeholder="Class">
+
+        <input class="input"
+               placeholder="Class">
 
         <select class="weighted-grade">
             <option value="4">A</option>
@@ -1244,32 +2405,38 @@ function addWeighted() {
 
         <select class="weight">
             <option value="0">Regular</option>
-            <option value="0.5">Honors</option>
+            <option value=".5">Honors</option>
             <option value="1">AP</option>
         </select>
-
-        <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
     `;
 
     container.appendChild(row);
 }
 
-function calculateWeighted() {
 
-    const grades = [...document.querySelectorAll(".weighted-grade")];
-    const weights = [...document.querySelectorAll(".weight")];
+function calcWeighted() {
 
-    if (!grades.length) return;
+    const grades =
+        [...document.querySelectorAll(".weighted-grade")];
+
+    const weights =
+        [...document.querySelectorAll(".weight")];
 
     let total = 0;
 
-    for (let i = 0; i < grades.length; i++) {
-        total += Number(grades[i].value) + Number(weights[i].value);
-    }
+    grades.forEach((grade,index) => {
 
-    const gpa = total / grades.length;
+        total +=
+            Number(grade.value) +
+            Number(weights[index].value);
 
-    const result = document.getElementById("weightedResult");
+    });
+
+    const gpa =
+        total / grades.length;
+
+    const result =
+        document.getElementById("weightedResult");
 
     result.style.display = "block";
 
@@ -1280,72 +2447,28 @@ function calculateWeighted() {
 }
 
 
-/* FINAL GRADE */
+/* =========================
+   PERCENTAGE
+========================= */
 
-function calculateFinal() {
+function calcPercentage() {
 
-    const current = Number(document.getElementById("currentGrade").value);
-    const weight = Number(document.getElementById("finalWeight").value);
-    const desired = Number(document.getElementById("desiredGrade").value);
+    const a =
+        Number(document.getElementById("percentA").value);
 
-    if (
-        !isFinite(current) ||
-        !isFinite(weight) ||
-        !isFinite(desired) ||
-        weight <= 0 ||
-        weight >= 100
-    ) {
-        alert("Please enter valid numbers.");
-        return;
-    }
-
-    const needed =
-        (desired - current * (1 - weight / 100))
-        / (weight / 100);
-
-    const result = document.getElementById("finalResult");
-
-    result.style.display = "block";
-
-    if (needed <= 0) {
-
-        result.innerHTML = `
-            You already have enough!
-            <strong>0%</strong>
-        `;
-
-    } else if (needed > 100) {
-
-        result.innerHTML = `
-            You would need more than 100%.
-            <strong>${needed.toFixed(1)}%</strong>
-        `;
-
-    } else {
-
-        result.innerHTML = `
-            You need about
-            <strong>${needed.toFixed(1)}%</strong>
-        `;
-    }
-}
-
-
-/* PERCENTAGE */
-
-function calculatePercentage() {
-
-    const a = Number(document.getElementById("percentA").value);
-    const b = Number(document.getElementById("percentB").value);
+    const b =
+        Number(document.getElementById("percentB").value);
 
     if (!b) {
-        alert("Please enter a valid second number.");
+        alert("Enter a valid total.");
         return;
     }
 
-    const answer = (a / b) * 100;
+    const answer =
+        (a / b) * 100;
 
-    const result = document.getElementById("percentageResult");
+    const result =
+        document.getElementById("percentResult");
 
     result.style.display = "block";
 
@@ -1356,55 +2479,31 @@ function calculatePercentage() {
 }
 
 
-/* PERCENTAGE CHANGE */
+/* =========================
+   AVERAGE
+========================= */
 
-function calculateChange() {
+function calcAverage() {
 
-    const oldValue = Number(document.getElementById("oldValue").value);
-    const newValue = Number(document.getElementById("newValue").value);
+    const numbers =
+        document
+            .getElementById("averageInput")
+            .value
+            .split(",")
+            .map(Number)
+            .filter(n => !isNaN(n));
 
-    if (!oldValue) {
-        alert("Original value cannot be zero.");
-        return;
-    }
-
-    const change = ((newValue - oldValue) / Math.abs(oldValue)) * 100;
-
-    const direction =
-        change > 0 ? "increase" :
-        change < 0 ? "decrease" :
-        "no change";
-
-    const result = document.getElementById("changeResult");
-
-    result.style.display = "block";
-
-    result.innerHTML = `
-        ${direction}
-        <strong>${Math.abs(change).toFixed(2)}%</strong>
-    `;
-}
-
-
-/* AVERAGE */
-
-function calculateAverage() {
-
-    const values = document.getElementById("averageInput")
-        .value
-        .split(",")
-        .map(Number)
-        .filter(x => !isNaN(x));
-
-    if (!values.length) {
-        alert("Enter some numbers separated by commas.");
+    if (!numbers.length) {
+        alert("Enter numbers separated by commas.");
         return;
     }
 
     const average =
-        values.reduce((a,b) => a+b, 0) / values.length;
+        numbers.reduce((a,b) => a+b,0) /
+        numbers.length;
 
-    const result = document.getElementById("averageResult");
+    const result =
+        document.getElementById("averageResult");
 
     result.style.display = "block";
 
@@ -1415,160 +2514,152 @@ function calculateAverage() {
 }
 
 
-/* WORD COUNTER */
+/* =========================
+   FINAL GRADE
+========================= */
 
-function updateWords() {
+function calcFinal() {
 
-    const text = document.getElementById("wordText").value;
+    const current =
+        Number(document.getElementById("currentGrade").value);
 
-    const words = text.trim()
-        ? text.trim().split(/\s+/).length
-        : 0;
+    const weight =
+        Number(document.getElementById("finalWeight").value);
 
-    document.getElementById("wordNumber").textContent = words;
-    document.getElementById("charNumber").textContent = text.length;
+    const desired =
+        Number(document.getElementById("desiredGrade").value);
+
+    if (weight <= 0 || weight >= 100) {
+        alert("Final weight must be between 0 and 100.");
+        return;
+    }
+
+    const needed =
+        (desired - current * (1-weight/100))
+        / (weight/100);
+
+    const result =
+        document.getElementById("finalResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Required Final Grade
+        <strong>${needed.toFixed(1)}%</strong>
+    `;
 }
 
 
-/* TIMER */
+/* =========================
+   WORD COUNTER
+========================= */
+
+function updateWords() {
+
+    const text =
+        document.getElementById("wordText").value;
+
+    const words =
+        text.trim()
+            ? text.trim().split(/\s+/).length
+            : 0;
+
+    document.getElementById("wordCount").textContent =
+        words;
+
+    document.getElementById("charCount").textContent =
+        text.length;
+}
+
+
+/* =========================
+   TIMER
+========================= */
 
 let timerInterval = null;
 let timerSeconds = 1500;
 
-function updateTimerDisplay() {
+function updateTimer() {
 
     const minutes =
-        Math.floor(timerSeconds / 60)
+        Math.floor(timerSeconds/60)
         .toString()
-        .padStart(2, "0");
+        .padStart(2,"0");
 
     const seconds =
-        (timerSeconds % 60)
+        (timerSeconds%60)
         .toString()
-        .padStart(2, "0");
+        .padStart(2,"0");
 
-    const display = document.getElementById("timerDisplay");
+    const display =
+        document.getElementById("timerDisplay");
 
     if (display) {
-        display.textContent = `${minutes}:${seconds}`;
+        display.textContent =
+            `${minutes}:${seconds}`;
     }
 }
 
 function startTimer() {
 
-    const minutes = Number(
-        document.getElementById("timerMinutes").value
-    );
+    const minutes =
+        Number(
+            document.getElementById("timerMinutes").value
+        ) || 25;
 
-    if (timerSeconds === 0 || timerSeconds === 1500) {
-        timerSeconds = Math.max(1, minutes) * 60;
+    if (
+        timerSeconds === 1500 ||
+        timerSeconds <= 0
+    ) {
+        timerSeconds = minutes * 60;
     }
 
     clearInterval(timerInterval);
 
-    timerInterval = setInterval(() => {
+    timerInterval =
+        setInterval(() => {
 
-        if (timerSeconds <= 0) {
-            clearInterval(timerInterval);
-            alert("Study session complete! 🎉");
-            return;
-        }
+            if (timerSeconds <= 0) {
 
-        timerSeconds--;
-        updateTimerDisplay();
+                clearInterval(timerInterval);
 
-    }, 1000);
-}
+                alert("Study session complete! 🎉");
 
-function pauseTimer() {
-    clearInterval(timerInterval);
+                return;
+            }
+
+            timerSeconds--;
+
+            updateTimer();
+
+        },1000);
 }
 
 function resetTimer() {
 
     clearInterval(timerInterval);
 
-    const minutes = Number(
-        document.getElementById("timerMinutes").value
-    ) || 25;
+    const minutes =
+        Number(
+            document.getElementById("timerMinutes").value
+        ) || 25;
 
-    timerSeconds = minutes * 60;
+    timerSeconds =
+        minutes * 60;
 
-    updateTimerDisplay();
+    updateTimer();
 }
 
 
-/* COUNTDOWN */
-
-let countdownInterval = null;
-
-function startCountdown() {
-
-    clearInterval(countdownInterval);
-
-    const input = document.getElementById("examDate").value;
-
-    if (!input) {
-        alert("Choose an exam date.");
-        return;
-    }
-
-    const target = new Date(input).getTime();
-
-    function update() {
-
-        const now = Date.now();
-        const difference = target - now;
-
-        const result =
-            document.getElementById("countdownResult");
-
-        if (difference <= 0) {
-
-            clearInterval(countdownInterval);
-
-            result.innerHTML = `
-                Your exam time has arrived!
-                <strong>Good luck! 🎓</strong>
-            `;
-
-            return;
-        }
-
-        const days = Math.floor(
-            difference / (1000 * 60 * 60 * 24)
-        );
-
-        const hours = Math.floor(
-            difference / (1000 * 60 * 60)
-        ) % 24;
-
-        const minutes = Math.floor(
-            difference / (1000 * 60)
-        ) % 60;
-
-        const seconds = Math.floor(
-            difference / 1000
-        ) % 60;
-
-        result.innerHTML = `
-            Time remaining
-            <strong>
-                ${days}d ${hours}h ${minutes}m ${seconds}s
-            </strong>
-        `;
-    }
-
-    update();
-
-    countdownInterval = setInterval(update, 1000);
-}
-
-
-/* ASSIGNMENTS */
+/* =========================
+   ASSIGNMENTS
+========================= */
 
 let assignments =
-    JSON.parse(localStorage.getItem("studenttools-assignments")) || [];
+    JSON.parse(
+        localStorage.getItem("studenttools-assignments")
+    ) || [];
+
 
 function saveAssignments() {
 
@@ -1578,13 +2669,19 @@ function saveAssignments() {
     );
 }
 
+
 function addAssignment() {
 
     const name =
-        document.getElementById("assignmentName").value.trim();
+        document
+            .getElementById("assignmentName")
+            .value
+            .trim();
 
     const date =
-        document.getElementById("assignmentDate").value;
+        document
+            .getElementById("assignmentDate")
+            .value;
 
     if (!name) {
         alert("Enter an assignment name.");
@@ -1592,34 +2689,18 @@ function addAssignment() {
     }
 
     assignments.push({
-        name,
-        date,
-        done: false
+        name:name,
+        date:date,
+        done:false
     });
 
     saveAssignments();
 
+    renderAssignments();
+
     document.getElementById("assignmentName").value = "";
-
-    renderAssignments();
 }
 
-function toggleAssignment(index) {
-
-    assignments[index].done =
-        !assignments[index].done;
-
-    saveAssignments();
-    renderAssignments();
-}
-
-function deleteAssignment(index) {
-
-    assignments.splice(index, 1);
-
-    saveAssignments();
-    renderAssignments();
-}
 
 function renderAssignments() {
 
@@ -1631,45 +2712,85 @@ function renderAssignments() {
     if (!assignments.length) {
 
         list.innerHTML =
-            `<p style="color:var(--muted);text-align:center;padding:20px">
+            `<p style="color:var(--muted);text-align:center">
                 No assignments yet.
             </p>`;
 
         return;
     }
 
-    list.innerHTML = assignments.map((item,index) => `
+    list.innerHTML =
+        assignments.map((a,i) => `
 
-        <div class="assignment ${item.done ? "done" : ""}">
+            <div style="
+                padding:14px;
+                border:1px solid var(--border);
+                border-radius:13px;
+                margin-bottom:9px;
+                display:flex;
+                gap:10px;
+                align-items:center;
+            ">
 
-            <input
-                type="checkbox"
-                ${item.done ? "checked" : ""}
-                onchange="toggleAssignment(${index})"
-            >
+                <input
+                    type="checkbox"
+                    ${a.done ? "checked" : ""}
+                    onchange="toggleAssignment(${i})">
 
-            <div class="assignment-info">
-                <strong>${escapeHTML(item.name)}</strong>
-                <span>${item.date || "No due date"}</span>
+                <div style="flex:1">
+                    <strong>${escapeHTML(a.name)}</strong>
+                    <div style="color:var(--muted);font-size:11px">
+                        ${a.date || "No due date"}
+                    </div>
+                </div>
+
+                <button
+                    onclick="deleteAssignment(${i})"
+                    style="
+                        border:none;
+                        background:none;
+                        color:#ef5b68;
+                        cursor:pointer
+                    ">
+                    Delete
+                </button>
+
             </div>
 
-            <button
-                class="delete-btn"
-                onclick="deleteAssignment(${index})"
-            >
-                Delete
-            </button>
-
-        </div>
-
-    `).join("");
+        `).join("");
 }
 
 
-/* FLASHCARDS */
+function toggleAssignment(index) {
+
+    assignments[index].done =
+        !assignments[index].done;
+
+    saveAssignments();
+
+    renderAssignments();
+}
+
+
+function deleteAssignment(index) {
+
+    assignments.splice(index,1);
+
+    saveAssignments();
+
+    renderAssignments();
+}
+
+
+/* =========================
+   FLASHCARDS
+========================= */
 
 let flashcards =
-    JSON.parse(localStorage.getItem("studenttools-flashcards")) || [];
+    JSON.parse(
+        localStorage.getItem("studenttools-flashcards")
+    ) || [];
+
 
 function saveFlashcards() {
 
@@ -1679,16 +2800,23 @@ function saveFlashcards() {
     );
 }
 
+
 function addFlashcard() {
 
     const question =
-        document.getElementById("cardQuestion").value.trim();
+        document
+            .getElementById("cardQuestion")
+            .value
+            .trim();
 
     const answer =
-        document.getElementById("cardAnswer").value.trim();
+        document
+            .getElementById("cardAnswer")
+            .value
+            .trim();
 
     if (!question || !answer) {
-        alert("Enter both a question and an answer.");
+        alert("Enter both a question and answer.");
         return;
     }
 
@@ -1699,20 +2827,12 @@ function addFlashcard() {
 
     saveFlashcards();
 
+    renderFlashcards();
+
     document.getElementById("cardQuestion").value = "";
     document.getElementById("cardAnswer").value = "";
-
-    renderFlashcards();
 }
 
-function deleteFlashcard(index) {
-
-    flashcards.splice(index, 1);
-
-    saveFlashcards();
-
-    renderFlashcards();
-}
 
 function renderFlashcards() {
 
@@ -1724,52 +2844,73 @@ function renderFlashcards() {
     if (!flashcards.length) {
 
         list.innerHTML =
-            `<p style="color:var(--muted);text-align:center;padding:20px">
+            `<p style="color:var(--muted);text-align:center">
                 No flashcards yet.
             </p>`;
 
         return;
     }
 
-    list.innerHTML = flashcards.map((card,index) => `
+    list.innerHTML =
+        flashcards.map((card,i) => `
 
-        <div
-            class="flashcard"
-            onclick="flipCard(${index})"
-            id="card-${index}"
-        >
-            <div>
-                <small style="color:var(--muted)">
-                    Question
-                </small>
+            <div
+                onclick="flipFlashcard(${i})"
+                id="flash-${i}"
+                style="
+                    min-height:130px;
+                    display:grid;
+                    place-items:center;
+                    text-align:center;
+                    padding:20px;
+                    border:1px solid var(--border);
+                    border-radius:16px;
+                    background:rgba(112,92,255,.06);
+                    cursor:pointer;
+                    margin-bottom:8px;
+                ">
 
-                <h3>
-                    ${escapeHTML(card.question)}
-                </h3>
+                <div>
+
+                    <small style="color:var(--muted)">
+                        Question
+                    </small>
+
+                    <h3>
+                        ${escapeHTML(card.question)}
+                    </h3>
+
+                </div>
+
             </div>
-        </div>
 
-        <button
-            class="delete-btn"
-            onclick="event.stopPropagation();deleteFlashcard(${index})"
-        >
-            Delete flashcard
-        </button>
+            <button
+                onclick="deleteFlashcard(${i})"
+                style="
+                    border:none;
+                    background:none;
+                    color:#ef5b68;
+                    cursor:pointer;
+                    margin-bottom:15px;
+                ">
+                Delete
+            </button>
 
-    `).join("");
+        `).join("");
 }
 
-function flipCard(index) {
+
+function flipFlashcard(index) {
+
+    const card =
+        flashcards[index];
 
     const element =
-        document.getElementById(`card-${index}`);
+        document.getElementById(
+            `flash-${index}`
+        );
 
-    const card = flashcards[index];
-
-    const showingAnswer =
-        element.dataset.answer === "true";
-
-    if (showingAnswer) {
+    if (element.dataset.answer === "true") {
 
         element.innerHTML = `
             <div>
@@ -1798,17 +2939,543 @@ function flipCard(index) {
 }
 
 
-/* SECURITY */
+function deleteFlashcard(index) {
+
+    flashcards.splice(index,1);
+
+    saveFlashcards();
+
+    renderFlashcards();
+}
+
+
+/* =========================
+   GRADE PLANNER
+========================= */
+
+function gradePlanner() {
+
+    const current =
+        Number(document.getElementById("plannerCurrent").value);
+
+    const target =
+        Number(document.getElementById("plannerTarget").value);
+
+    const assignments =
+        Number(document.getElementById("plannerAssignments").value);
+
+    if (!assignments) {
+        alert("Enter assignments remaining.");
+        return;
+    }
+
+    const difference =
+        target-current;
+
+    const needed =
+        current + difference;
+
+    const result =
+        document.getElementById("plannerResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Aim for approximately
+        <strong>${needed.toFixed(1)}%</strong>
+        on your remaining work.
+    `;
+}
+
+
+/* =========================
+   GPA PROJECTION
+========================= */
+
+function projection() {
+
+    const current =
+        Number(document.getElementById("projectionGPA").value);
+
+    const completed =
+        Number(document.getElementById("projectionClasses").value);
+
+    const future =
+        Number(document.getElementById("futureGPA").value);
+
+    const futureClasses =
+        Number(document.getElementById("futureClasses").value);
+
+    if (!completed || !futureClasses) {
+        alert("Enter valid class counts.");
+        return;
+    }
+
+    const projected =
+        (
+            current*completed +
+            future*futureClasses
+        )
+        /
+        (completed+futureClasses);
+
+    const result =
+        document.getElementById("projectionResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Projected GPA
+        <strong>${projected.toFixed(2)}</strong>
+    `;
+}
+
+
+/* =========================
+   STUDY PLANNER
+========================= */
+
+function studyPlanner() {
+
+    const subject =
+        document.getElementById("studySubject").value;
+
+    const hours =
+        Number(document.getElementById("studyHours").value);
+
+    const topics =
+        Number(document.getElementById("studyTopics").value);
+
+    if (!subject || !hours || !topics) {
+        alert("Fill in all fields.");
+        return;
+    }
+
+    const minutes =
+        Math.round((hours*60)/topics);
+
+    const result =
+        document.getElementById("studyResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Study <strong>${minutes} minutes</strong>
+        per topic for ${subject}.
+    `;
+}
+
+
+/* =========================
+   GRADE GOAL
+========================= */
+
+function gradeGoal() {
+
+    const current =
+        Number(document.getElementById("goalCurrent").value);
+
+    const target =
+        Number(document.getElementById("goalTarget").value);
+
+    const weight =
+        Number(document.getElementById("goalWeight").value);
+
+    if (weight <= 0 || weight >= 100) {
+        alert("Weight must be between 0 and 100.");
+        return;
+    }
+
+    const needed =
+        (
+            target -
+            current*(1-weight/100)
+        )
+        /
+        (weight/100);
+
+    const result =
+        document.getElementById("goalResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        You need
+        <strong>${needed.toFixed(1)}%</strong>
+        on the remaining work.
+    `;
+}
+
+
+/* =========================
+   SEMESTER PLANNER
+========================= */
+
+let semesterEvents =
+    JSON.parse(
+        localStorage.getItem("studenttools-semester")
+    ) || [];
+
+
+function addSemesterEvent() {
+
+    const name =
+        document.getElementById("semesterEvent")
+            .value.trim();
+
+    const date =
+        document.getElementById("semesterDate")
+            .value;
+
+    if (!name || !date) {
+        alert("Enter an event and date.");
+        return;
+    }
+
+    semesterEvents.push({
+        name,
+        date
+    });
+
+    localStorage.setItem(
+        "studenttools-semester",
+        JSON.stringify(semesterEvents)
+    );
+
+    renderSemester();
+}
+
+
+function renderSemester() {
+
+    const list =
+        document.getElementById("semesterList");
+
+    if (!list) return;
+
+    list.innerHTML =
+        semesterEvents.map((event,i) => `
+
+            <div style="
+                padding:14px;
+                border:1px solid var(--border);
+                border-radius:13px;
+                margin-bottom:9px;
+            ">
+
+                <strong>${escapeHTML(event.name)}</strong>
+
+                <div style="
+                    color:var(--muted);
+                    font-size:11px;
+                    margin-top:3px;
+                ">
+                    ${event.date}
+                </div>
+
+            </div>
+
+        `).join("");
+}
+
+
+/* =========================
+   EXAM COUNTDOWN
+========================= */
+
+let countdownInterval;
+
+
+function startCountdown() {
+
+    clearInterval(countdownInterval);
+
+    const date =
+        document.getElementById("examDate").value;
+
+    if (!date) {
+        alert("Choose an exam date.");
+        return;
+    }
+
+    const target =
+        new Date(date).getTime();
+
+    function updateCountdown() {
+
+        const difference =
+            target-Date.now();
+
+        const result =
+            document.getElementById("countdownResult");
+
+        if (difference <= 0) {
+
+            clearInterval(countdownInterval);
+
+            result.innerHTML = `
+                Your exam is here!
+                <strong>Good luck! 🎓</strong>
+            `;
+
+            return;
+        }
+
+        const days =
+            Math.floor(
+                difference/(1000*60*60*24)
+            );
+
+        const hours =
+            Math.floor(
+                difference/(1000*60*60)
+            ) % 24;
+
+        const minutes =
+            Math.floor(
+                difference/(1000*60)
+            ) % 60;
+
+        const seconds =
+            Math.floor(
+                difference/1000
+            ) % 60;
+
+        result.innerHTML = `
+            Time Remaining
+
+            <strong>
+                ${days}d ${hours}h ${minutes}m ${seconds}s
+            </strong>
+        `;
+    }
+
+    updateCountdown();
+
+    countdownInterval =
+        setInterval(updateCountdown,1000);
+}
+
+
+/* =========================
+   PERCENTAGE CHANGE
+========================= */
+
+function percentageChange() {
+
+    const oldValue =
+        Number(document.getElementById("oldValue").value);
+
+    const newValue =
+        Number(document.getElementById("newValue").value);
+
+    if (!oldValue) {
+        alert("Original value cannot be zero.");
+        return;
+    }
+
+    const change =
+        ((newValue-oldValue)/Math.abs(oldValue))*100;
+
+    const result =
+        document.getElementById("changeResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        ${change >= 0 ? "Increase" : "Decrease"}
+        <strong>${Math.abs(change).toFixed(2)}%</strong>
+    `;
+}
+
+
+/* =========================
+   TEST SCORE
+========================= */
+
+function testScore() {
+
+    const correct =
+        Number(document.getElementById("correct").value);
+
+    const total =
+        Number(document.getElementById("totalQuestions").value);
+
+    if (!total) {
+        alert("Enter total questions.");
+        return;
+    }
+
+    const score =
+        (correct/total)*100;
+
+    const result =
+        document.getElementById("testResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Test Score
+        <strong>${score.toFixed(1)}%</strong>
+    `;
+}
+
+
+/* =========================
+   ASSIGNMENT GRADE
+========================= */
+
+function assignmentGrade() {
+
+    const earned =
+        Number(document.getElementById("pointsEarned").value);
+
+    const possible =
+        Number(document.getElementById("pointsPossible").value);
+
+    if (!possible) {
+        alert("Enter points possible.");
+        return;
+    }
+
+    const grade =
+        (earned/possible)*100;
+
+    const result =
+        document.getElementById("assignmentResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Assignment Grade
+        <strong>${grade.toFixed(1)}%</strong>
+    `;
+}
+
+
+/* =========================
+   QUICK MATH
+========================= */
+
+function quickMath() {
+
+    const expression =
+        document
+            .getElementById("mathExpression")
+            .value
+            .trim();
+
+    /*
+      Basic calculator for the prototype.
+      Only allows numbers and basic operators.
+    */
+
+    if (!/^[0-9+\-*/().\s]+$/.test(expression)) {
+
+        alert("Use only numbers and + - * / ( ).");
+
+        return;
+    }
+
+    try {
+
+        const answer =
+            Function(
+                '"use strict";return (' +
+                expression +
+                ')'
+            )();
+
+        const result =
+            document.getElementById("mathResult");
+
+        result.style.display = "block";
+
+        result.innerHTML = `
+            Answer
+            <strong>${answer}</strong>
+        `;
+
+    } catch {
+
+        alert("Invalid expression.");
+    }
+}
+
+
+/* =========================
+   DATE DIFFERENCE
+========================= */
+
+function dateDifference() {
+
+    const start =
+        new Date(
+            document.getElementById("startDate").value
+        );
+
+    const end =
+        new Date(
+            document.getElementById("endDate").value
+        );
+
+    if (
+        isNaN(start.getTime()) ||
+        isNaN(end.getTime())
+    ) {
+        alert("Choose both dates.");
+        return;
+    }
+
+    const days =
+        Math.abs(
+            Math.round(
+                (end-start)/
+                (1000*60*60*24)
+            )
+        );
+
+    const result =
+        document.getElementById("daysResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Days Between
+        <strong>${days}</strong>
+    `;
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
 
 function escapeHTML(text) {
 
-    return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 }
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener("keydown",function(e) {
+
+    if (e.key === "Escape") {
+
+        closeTool();
+        closePricing();
+
+    }
+
+});
 
 </script>
 
