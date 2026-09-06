@@ -3,1851 +3,1811 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="StudentTools - Free calculators, study tools, grade trackers, timers, flashcards and more for students.">
-<meta name="keywords" content="student tools, GPA calculator, grade calculator, study timer, word counter, flashcards, assignment tracker">
-<title>StudentTools — Free Tools for Students</title>
+<title>StudentTools — Tools for Students</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-html{
-scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root{
---bg:#f7f8fc;
---card:rgba(255,255,255,.85);
---text:#111827;
---muted:#667085;
---border:rgba(15,23,42,.08);
---primary:#6366f1;
---purple:#8b5cf6;
---soft:#eef2ff;
---shadow:0 15px 45px rgba(15,23,42,.07);
+:root {
+    --bg: #f7f8fc;
+    --card: rgba(255,255,255,.82);
+    --text: #151625;
+    --muted: #6b6e80;
+    --border: rgba(20,20,40,.08);
+    --primary: #6d5dfc;
+    --primary2: #8d5cff;
+    --shadow: 0 15px 45px rgba(30,25,80,.09);
 }
 
-body.dark{
---bg:#090d18;
---card:rgba(17,24,39,.85);
---text:#f8fafc;
---muted:#94a3b8;
---border:rgba(255,255,255,.09);
---soft:#1e1b4b;
---shadow:0 15px 45px rgba(0,0,0,.3);
+body.dark {
+    --bg: #0c0d14;
+    --card: rgba(23,24,36,.82);
+    --text: #f5f5fa;
+    --muted: #a5a7b5;
+    --border: rgba(255,255,255,.08);
+    --shadow: 0 15px 45px rgba(0,0,0,.3);
 }
 
-body{
-font-family:Inter,Arial,sans-serif;
-background:
-radial-gradient(circle at 10% 0%,rgba(99,102,241,.12),transparent 30%),
-radial-gradient(circle at 90% 5%,rgba(139,92,246,.10),transparent 30%),
-var(--bg);
-color:var(--text);
-min-height:100vh;
-transition:.3s;
+html {
+    scroll-behavior: smooth;
 }
 
-button,input,textarea,select{
-font:inherit;
-}
-
-button{
-transition:.2s ease;
+body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(109,93,252,.12), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(141,92,255,.10), transparent 28%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background .3s, color .3s;
 }
 
 /* NAVBAR */
 
-.navbar{
-height:72px;
-padding:0 7%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:100;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-border-bottom:1px solid var(--border);
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(18px);
+    background: rgba(247,248,252,.72);
+    border-bottom: 1px solid var(--border);
 }
 
-.dark .navbar{
-background:rgba(9,13,24,.7);
+body.dark .navbar {
+    background: rgba(12,13,20,.72);
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:21px;
-font-weight:850;
-letter-spacing:-.5px;
-cursor:pointer;
+.nav-inner {
+    max-width: 1180px;
+    margin: auto;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.logo:before{
-content:"S";
-width:38px;
-height:38px;
-display:grid;
-place-items:center;
-border-radius:12px;
-color:white;
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
-box-shadow:0 8px 25px rgba(99,102,241,.3);
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.5px;
 }
 
-.nav-right{
-display:flex;
-gap:10px;
+.logo-icon {
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    box-shadow: 0 8px 22px rgba(109,93,252,.3);
 }
 
-.icon-btn{
-width:42px;
-height:42px;
-border:1px solid var(--border);
-border-radius:12px;
-background:var(--card);
-color:var(--text);
-cursor:pointer;
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.icon-btn:hover{
-transform:translateY(-2px);
-box-shadow:var(--shadow);
+.nav-link {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.theme-btn {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: .2s;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
 }
 
 /* HERO */
 
-.hero{
-text-align:center;
-padding:100px 20px 65px;
-max-width:1000px;
-margin:auto;
+.hero {
+    max-width: 1180px;
+    margin: auto;
+    padding: 85px 22px 65px;
+    text-align: center;
+    position: relative;
 }
 
-.hero-badge{
-display:inline-block;
-padding:8px 15px;
-border-radius:50px;
-background:var(--soft);
-color:var(--primary);
-font-size:13px;
-font-weight:750;
-margin-bottom:22px;
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    border: 1px solid rgba(109,93,252,.2);
+    background: rgba(109,93,252,.08);
+    color: var(--primary);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 750;
+    margin-bottom: 22px;
 }
 
-.hero h1{
-font-size:clamp(48px,7vw,78px);
-line-height:.98;
-letter-spacing:-4px;
-margin-bottom:24px;
+.hero h1 {
+    font-size: clamp(46px, 7vw, 78px);
+    line-height: .98;
+    letter-spacing: -4px;
+    max-width: 900px;
+    margin: auto;
 }
 
-.gradient{
-background:linear-gradient(100deg,#4f46e5,#7c3aed,#a855f7);
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
+.gradient-text {
+    background: linear-gradient(120deg, #6655fa, #a257ff, #6655fa);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradientMove 5s linear infinite;
 }
 
-.hero p{
-max-width:650px;
-margin:auto;
-font-size:18px;
-line-height:1.7;
-color:var(--muted);
+@keyframes gradientMove {
+    to {
+        background-position: 200% center;
+    }
 }
 
-/* HERO BUTTONS */
-
-.hero-actions{
-display:flex;
-justify-content:center;
-gap:12px;
-margin-top:30px;
+.hero p {
+    max-width: 650px;
+    margin: 24px auto 0;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
 }
 
-.hero-btn{
-padding:14px 22px;
-border-radius:13px;
-font-weight:750;
-cursor:pointer;
+.hero-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.hero-primary{
-border:none;
-color:white;
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
-box-shadow:0 12px 28px rgba(99,102,241,.25);
+.primary-btn,
+.secondary-btn {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 21px;
+    font-weight: 750;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .25s;
 }
 
-.hero-primary:hover{
-transform:translateY(-3px);
-box-shadow:0 18px 35px rgba(99,102,241,.3);
+.primary-btn {
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    box-shadow: 0 12px 25px rgba(109,93,252,.25);
 }
 
-.hero-secondary{
-border:1px solid var(--border);
-background:var(--card);
-color:var(--text);
+.secondary-btn {
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid var(--border);
 }
 
-.hero-secondary:hover{
-transform:translateY(-3px);
+.primary-btn:hover,
+.secondary-btn:hover {
+    transform: translateY(-3px);
 }
 
 /* SEARCH */
 
-.search-box{
-max-width:720px;
-margin:0 auto 60px;
-padding:17px 22px 17px 50px;
-display:block;
-width:90%;
-border:1px solid var(--border);
-border-radius:17px;
-outline:none;
-background:var(--card);
-color:var(--text);
-box-shadow:var(--shadow);
-backdrop-filter:blur(15px);
-transition:.2s;
+.search-wrap {
+    max-width: 650px;
+    margin: 30px auto 0;
+    position: relative;
 }
 
-.search-box:focus{
-border-color:rgba(99,102,241,.5);
-box-shadow:
-0 0 0 4px rgba(99,102,241,.1),
-var(--shadow);
+.search {
+    width: 100%;
+    padding: 17px 20px 17px 48px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    font-size: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(15px);
+}
+
+.search:focus {
+    border-color: rgba(109,93,252,.5);
+    box-shadow: 0 0 0 4px rgba(109,93,252,.08);
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    font-size: 18px;
 }
 
 /* TOOLS */
 
-.container{
-width:min(1150px,90%);
-margin:auto;
+.tools-section {
+    max-width: 1180px;
+    margin: auto;
+    padding: 20px 22px 80px;
 }
 
-.section-title{
-margin-bottom:25px;
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 25px;
 }
 
-.section-title h2{
-font-size:30px;
-letter-spacing:-1px;
+.section-heading h2 {
+    font-size: 30px;
+    letter-spacing: -1px;
 }
 
-.section-title p{
-color:var(--muted);
-margin-top:7px;
+.section-heading p {
+    color: var(--muted);
+    margin-top: 5px;
 }
 
-.tools-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-padding-bottom:80px;
+.tool-count {
+    color: var(--muted);
+    font-size: 13px;
 }
 
-.tool-card{
-position:relative;
-overflow:hidden;
-padding:26px;
-min-height:245px;
-border:1px solid var(--border);
-border-radius:22px;
-background:var(--card);
-backdrop-filter:blur(16px);
-box-shadow:var(--shadow);
-transition:
-transform .25s ease,
-box-shadow .25s ease,
-border-color .25s ease;
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
 }
 
-.tool-card:hover{
-transform:translateY(-8px);
-box-shadow:0 25px 65px rgba(79,70,229,.14);
-border-color:rgba(99,102,241,.25);
+.tool-card {
+    border: 1px solid var(--border);
+    background: var(--card);
+    backdrop-filter: blur(15px);
+    border-radius: 22px;
+    padding: 23px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s, border .25s;
 }
 
-.tool-card:after{
-content:"";
-position:absolute;
-width:130px;
-height:130px;
-right:-65px;
-top:-65px;
-border-radius:50%;
-background:rgba(99,102,241,.08);
+.tool-card::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: -45px;
+    top: -45px;
+    background: rgba(109,93,252,.12);
+    border-radius: 50%;
 }
 
-.tool-icon{
-width:52px;
-height:52px;
-display:grid;
-place-items:center;
-border-radius:15px;
-background:var(--soft);
-font-size:25px;
-margin-bottom:20px;
+.tool-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 22px 55px rgba(40,30,100,.14);
+    border-color: rgba(109,93,252,.25);
 }
 
-.tool-card h3{
-font-size:19px;
-margin-bottom:8px;
-letter-spacing:-.3px;
+.tool-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    background: rgba(109,93,252,.11);
+    margin-bottom: 18px;
 }
 
-.tool-card p{
-color:var(--muted);
-font-size:14px;
-line-height:1.55;
-min-height:45px;
+.tool-card h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
 }
 
-.open-btn{
-width:100%;
-margin-top:20px;
-padding:13px;
-border:none;
-border-radius:12px;
-color:white;
-font-weight:750;
-cursor:pointer;
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
-box-shadow:0 8px 20px rgba(99,102,241,.18);
+.tool-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 42px;
 }
 
-.open-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 13px 25px rgba(99,102,241,.25);
+.tool-arrow {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    color: var(--primary);
+    font-weight: bold;
 }
 
-/* TOOL WINDOWS */
+/* TOOL AREA */
 
-.tool-area{
-display:none;
-width:min(760px,90%);
-margin:0 auto 80px;
-animation:appear .35s ease;
+.tool-area {
+    display: none;
+    max-width: 850px;
+    margin: 35px auto 80px;
+    padding: 0 22px;
 }
 
-.tool-area.active{
-display:block;
+.tool-area.active {
+    display: block;
+    animation: appear .35s ease;
 }
 
-@keyframes appear{
-from{
-opacity:0;
-transform:translateY(15px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.tool-panel{
-padding:32px;
-border:1px solid var(--border);
-border-radius:24px;
-background:var(--card);
-backdrop-filter:blur(18px);
-box-shadow:var(--shadow);
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.back-btn{
-border:none;
-background:none;
-color:var(--primary);
-font-weight:750;
-cursor:pointer;
-margin-bottom:22px;
+.tool-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(15px);
 }
 
-.tool-panel h2{
-font-size:29px;
-letter-spacing:-1px;
+.tool-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 28px;
 }
 
-.tool-description{
-color:var(--muted);
-margin:8px 0 25px;
-line-height:1.5;
+.tool-top-icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    background: rgba(109,93,252,.12);
+    border-radius: 17px;
+    font-size: 25px;
 }
 
-/* INPUTS */
-
-.form-group{
-margin-bottom:17px;
+.tool-top h2 {
+    font-size: 27px;
 }
 
-.form-group label{
-display:block;
-font-size:13px;
-font-weight:750;
-margin-bottom:7px;
+.tool-top p {
+    color: var(--muted);
+    margin-top: 3px;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select{
-width:100%;
-padding:14px;
-border:1px solid var(--border);
-border-radius:12px;
-outline:none;
-background:var(--bg);
-color:var(--text);
-transition:.2s;
+.back-btn {
+    margin-bottom: 18px;
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-border-color:rgba(99,102,241,.5);
-box-shadow:0 0 0 4px rgba(99,102,241,.08);
+.input-group {
+    margin-bottom: 17px;
 }
 
-.calculate-btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
-color:white;
-font-weight:800;
-cursor:pointer;
-box-shadow:0 10px 22px rgba(99,102,241,.18);
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
 }
 
-.calculate-btn:hover{
-transform:translateY(-2px);
+.input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 13px 14px;
+    background: rgba(255,255,255,.45);
+    color: var(--text);
+    outline: none;
+    font-size: 14px;
 }
 
-/* RESULTS */
-
-.result{
-display:none;
-margin-top:18px;
-padding:18px;
-border-radius:13px;
-background:var(--soft);
-color:#4f46e5;
-text-align:center;
-font-weight:700;
-line-height:1.5;
+body.dark .input,
+body.dark select,
+body.dark textarea {
+    background: rgba(255,255,255,.04);
 }
 
-.dark .result{
-color:#e0e7ff;
+.input:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(109,93,252,.5);
 }
 
-.result.show{
-display:block;
+.calc-btn {
+    width: 100%;
+    margin-top: 7px;
+    padding: 14px;
+    border: none;
+    border-radius: 13px;
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s;
 }
 
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-top:15px;
+.calc-btn:hover {
+    transform: translateY(-2px);
 }
 
-.stat{
-padding:18px;
-border-radius:14px;
-border:1px solid var(--border);
-background:var(--bg);
-text-align:center;
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(109,93,252,.08);
+    border: 1px solid rgba(109,93,252,.12);
+    text-align: center;
 }
 
-.stat strong{
-display:block;
-font-size:25px;
-margin-bottom:4px;
+.result strong {
+    display: block;
+    font-size: 34px;
+    margin-top: 5px;
+    color: var(--primary);
 }
 
-.stat span{
-font-size:12px;
-color:var(--muted);
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.weighted-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.remove-btn {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,70,70,.1);
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+.add-btn {
+    margin: 5px 0 15px;
+    padding: 10px 14px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 700;
 }
 
 /* TIMER */
 
-.timer-display{
-font-size:78px;
-font-weight:850;
-letter-spacing:-4px;
-text-align:center;
-margin:35px 0;
+.timer-display {
+    text-align: center;
+    font-size: 72px;
+    font-weight: 850;
+    letter-spacing: -3px;
+    margin: 25px 0;
 }
 
-.timer-buttons{
-display:flex;
-gap:10px;
+.timer-controls {
+    display: flex;
+    gap: 10px;
 }
 
-.timer-buttons button{
-flex:1;
-padding:14px;
-border-radius:12px;
-border:none;
-cursor:pointer;
-font-weight:800;
-}
-
-.start{
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
-color:white;
-}
-
-.reset{
-background:var(--bg);
-color:var(--text);
-border:1px solid var(--border)!important;
+.timer-controls button {
+    flex: 1;
 }
 
 /* ASSIGNMENTS */
 
-.assignment{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-padding:16px;
-border:1px solid var(--border);
-border-radius:13px;
-margin-top:10px;
-background:var(--bg);
+.assignment {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    margin-bottom: 10px;
 }
 
-.assignment-info strong{
-display:block;
-margin-bottom:4px;
+.assignment.done {
+    opacity: .5;
+    text-decoration: line-through;
 }
 
-.assignment-info small{
-color:var(--muted);
+.assignment-info {
+    flex: 1;
 }
 
-.delete-btn{
-border:none;
-background:#ef4444;
-color:white;
-border-radius:9px;
-padding:9px 11px;
-cursor:pointer;
+.assignment-info strong {
+    display: block;
+}
+
+.assignment-info span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.delete-btn {
+    border: none;
+    background: transparent;
+    color: #e74c3c;
+    cursor: pointer;
 }
 
 /* FLASHCARDS */
 
-.flashcard{
-margin:22px 0;
+.flashcard {
+    min-height: 180px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 25px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    background: rgba(109,93,252,.05);
 }
 
-.flashcard-inner{
-min-height:240px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:30px;
-border:1px solid var(--border);
-border-radius:20px;
-background:linear-gradient(145deg,var(--bg),var(--soft));
-cursor:pointer;
-font-size:25px;
-font-weight:800;
-transition:.2s;
-}
-
-.flashcard-inner:hover{
-transform:scale(1.01);
-box-shadow:var(--shadow);
-}
-
-.flashcard-inner small{
-display:block;
-font-size:12px;
-color:var(--muted);
-margin-top:14px;
-}
-
-.flash-buttons{
-display:flex;
-gap:10px;
-}
-
-.flash-buttons button{
-flex:1;
-padding:13px;
-border-radius:11px;
-border:1px solid var(--border);
-background:var(--bg);
-color:var(--text);
-cursor:pointer;
-font-weight:750;
+.flashcard h3 {
+    font-size: 25px;
 }
 
 /* FOOTER */
 
-footer{
-padding:45px 20px;
-border-top:1px solid var(--border);
-text-align:center;
-color:var(--muted);
+footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 35px 20px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 /* MOBILE */
 
-@media(max-width:850px){
+@media (max-width: 850px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.tools-grid{
-grid-template-columns:repeat(2,1fr);
+    .weighted-row {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-}
+@media (max-width: 600px) {
+    .nav-link {
+        display: none;
+    }
 
-@media(max-width:560px){
+    .hero {
+        padding-top: 60px;
+    }
 
-.navbar{
-padding:0 18px;
-}
+    .hero h1 {
+        letter-spacing: -2.5px;
+    }
 
-.hero{
-padding:70px 18px 55px;
-}
+    .hero p {
+        font-size: 16px;
+    }
 
-.hero h1{
-font-size:46px;
-letter-spacing:-2.5px;
-}
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
 
-.hero p{
-font-size:16px;
-}
+    .section-heading {
+        display: block;
+    }
 
-.hero-actions{
-flex-direction:column;
-max-width:330px;
-margin:25px auto 0;
-}
+    .tool-count {
+        display: block;
+        margin-top: 8px;
+    }
 
-.tools-grid{
-grid-template-columns:1fr;
-}
+    .tool-box {
+        padding: 21px;
+    }
 
-.tool-card{
-min-height:215px;
-}
+    .row {
+        grid-template-columns: 1fr;
+    }
 
-.tool-panel{
-padding:23px;
-}
-
-.timer-display{
-font-size:55px;
-}
-
-.stats{
-grid-template-columns:1fr;
-}
-
-.tool-row{
-grid-template-columns:1fr;
-}
-
-.assignment{
-align-items:flex-start;
-}
-
+    .timer-display {
+        font-size: 58px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
-<div class="logo" onclick="goHome()">StudentTools</div>
+    <div class="nav-inner">
+        <div class="logo">
+            <div class="logo-icon">✦</div>
+            StudentTools
+        </div>
 
-<div class="nav-right">
-<button class="icon-btn" onclick="toggleDarkMode()">🌙</button>
-</div>
+        <div class="nav-actions">
+            <a href="#tools" class="nav-link">Tools</a>
+            <button class="theme-btn" onclick="toggleDark()" id="themeBtn">☾</button>
+        </div>
+    </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 
-<div class="hero-badge">✨ Free tools for students</div>
+    <div class="hero-badge">✦ Built for students</div>
 
-<h1>
-School just got<br>
-<span class="gradient">a little easier.</span>
-</h1>
+    <h1>
+        School just got
+        <span class="gradient-text">a little easier.</span>
+    </h1>
 
-<p>
-  <div class="hero-actions">
-<button class="hero-btn hero-primary" onclick="document.getElementById('toolsGrid').scrollIntoView({behavior:'smooth'})">
-Explore Tools →
-</button>
+    <p>
+        Free, simple tools to help you calculate grades,
+        stay organized, study smarter, and get things done.
+    </p>
 
-<button class="hero-btn hero-secondary" onclick="toggleDarkMode()">
-Toggle Dark Mode
-</button>
-</div>
-Calculate grades, organize assignments, study with focus,
-make flashcards, and use useful student tools — all in one place.
-</p>
+    <div class="hero-actions">
+        <button class="primary-btn" onclick="document.getElementById('tools').scrollIntoView()">
+            Explore Tools →
+        </button>
+
+        <button class="secondary-btn" onclick="toggleDark()">
+            ◐ Toggle Theme
+        </button>
+    </div>
+
+    <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input
+            class="search"
+            id="search"
+            placeholder="Search for a tool..."
+            oninput="searchTools()"
+        >
+    </div>
 
 </section>
 
-<div class="search-box">
-<input
-id="searchInput"
-type="text"
-placeholder="🔍 Search for a tool..."
-oninput="searchTools()">
-</div>
+<!-- TOOLS -->
+<section class="tools-section" id="tools">
 
-<main class="container">
+    <div class="section-heading">
+        <div>
+            <h2>Student tools</h2>
+            <p>Everything you need in one place.</p>
+        </div>
 
-<div class="section-title">
-<h2>Student Tools</h2>
-<p>Everything you need in one place.</p>
-</div>
+        <span class="tool-count" id="toolCount">11 tools</span>
+    </div>
 
-<div class="tools-grid" id="toolsGrid">
+    <div class="tools-grid" id="toolsGrid">
 
-<div class="tool-card" data-name="gpa grade average">
-<div class="tool-icon">📊</div>
-<h3>GPA Calculator</h3>
-<p>Calculate your GPA from your letter grades.</p>
-<button class="open-btn" onclick="openTool('gpaTool')">Open Calculator</button>
-</div>
+        <div class="tool-card" data-name="gpa grade point average" onclick="openTool('gpa')">
+            <div class="tool-icon">🎓</div>
+            <h3>GPA Calculator</h3>
+            <p>Calculate your GPA quickly and easily.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="weighted gpa honors ap">
-<div class="tool-icon">🎓</div>
-<h3>Weighted GPA</h3>
-<p>Calculate a GPA using regular, honors, and AP classes.</p>
-<button class="open-btn" onclick="openTool('weightedTool')">Open Calculator</button>
-</div>
+        <div class="tool-card" data-name="weighted gpa honors ap" onclick="openTool('weighted')">
+            <div class="tool-icon">⭐</div>
+            <h3>Weighted GPA</h3>
+            <p>Calculate your weighted GPA with honors and AP classes.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="final grade exam grade needed">
-<div class="tool-icon">🎯</div>
-<h3>Final Grade Calculator</h3>
-<p>Find the score you need on your final exam.</p>
-<button class="open-btn" onclick="openTool('finalTool')">Open Calculator</button>
-</div>
+        <div class="tool-card" data-name="final grade calculator" onclick="openTool('final')">
+            <div class="tool-icon">📊</div>
+            <h3>Final Grade</h3>
+            <p>Find the grade you need on your final exam.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="percentage percent">
-<div class="tool-icon">🧮</div>
-<h3>Percentage Calculator</h3>
-<p>Find a percentage of any number.</p>
-<button class="open-btn" onclick="openTool('percentTool')">Open Calculator</button>
-</div>
+        <div class="tool-card" data-name="percentage percent calculator" onclick="openTool('percentage')">
+            <div class="tool-icon">％</div>
+            <h3>Percentage Calculator</h3>
+            <p>Calculate percentages instantly.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="percentage change increase decrease">
-<div class="tool-icon">📈</div>
-<h3>Percentage Change</h3>
-<p>Calculate percentage increases and decreases.</p>
-<button class="open-btn" onclick="openTool('changeTool')">Open Calculator</button>
-</div>
+        <div class="tool-card" data-name="percentage change increase decrease" onclick="openTool('change')">
+            <div class="tool-icon">↗</div>
+            <h3>Percentage Change</h3>
+            <p>Calculate increases and decreases.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="average mean calculator">
-<div class="tool-icon">➗</div>
-<h3>Average Calculator</h3>
-<p>Find the average of multiple numbers.</p>
-<button class="open-btn" onclick="openTool('averageTool')">Open Calculator</button>
-</div>
+        <div class="tool-card" data-name="average mean calculator" onclick="openTool('average')">
+            <div class="tool-icon">∑</div>
+            <h3>Average Calculator</h3>
+            <p>Find the average of multiple numbers.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="word counter essay character">
-<div class="tool-icon">📝</div>
-<h3>Word Counter</h3>
-<p>Count words, characters, and sentences.</p>
-<button class="open-btn" onclick="openTool('wordTool')">Open Counter</button>
-</div>
+        <div class="tool-card" data-name="word counter writing words" onclick="openTool('words')">
+            <div class="tool-icon">Aa</div>
+            <h3>Word Counter</h3>
+            <p>Count words and characters in your writing.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="study timer pomodoro focus">
-<div class="tool-icon">⏱️</div>
-<h3>Study Timer</h3>
-<p>Stay focused with a simple 25-minute study timer.</p>
-<button class="open-btn" onclick="openTool('timerTool')">Start Timer</button>
-</div>
+        <div class="tool-card" data-name="study timer pomodoro" onclick="openTool('timer')">
+            <div class="tool-icon">⏱</div>
+            <h3>Study Timer</h3>
+            <p>Focus with a simple study timer.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="exam countdown test">
-<div class="tool-icon">📅</div>
-<h3>Exam Countdown</h3>
-<p>See exactly how long until your next exam.</p>
-<button class="open-btn" onclick="openTool('countdownTool')">Open Countdown</button>
-</div>
+        <div class="tool-card" data-name="exam countdown test" onclick="openTool('countdown')">
+            <div class="tool-icon">⌛</div>
+            <h3>Exam Countdown</h3>
+            <p>See exactly how much time is left.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="assignment homework tracker">
-<div class="tool-icon">✅</div>
-<h3>Assignment Tracker</h3>
-<p>Keep track of homework and assignments.</p>
-<button class="open-btn" onclick="openTool('assignmentTool')">Open Tracker</button>
-</div>
+        <div class="tool-card" data-name="assignment homework tracker" onclick="openTool('assignments')">
+            <div class="tool-icon">✓</div>
+            <h3>Assignment Tracker</h3>
+            <p>Keep track of your assignments.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-<div class="tool-card" data-name="flashcards study cards">
-<div class="tool-icon">🃏</div>
-<h3>Flashcard Maker</h3>
-<p>Create and study your own flashcards.</p>
-<button class="open-btn" onclick="openTool('flashcardTool')">Open Flashcards</button>
-</div>
+        <div class="tool-card" data-name="flashcards study cards" onclick="openTool('flashcards')">
+            <div class="tool-icon">▣</div>
+            <h3>Flashcard Maker</h3>
+            <p>Create simple flashcards for studying.</p>
+            <span class="tool-arrow">→</span>
+        </div>
 
-</div>
-</main>
-
-<!-- GPA -->
-
-<section class="tool-area" id="gpaTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>📊 GPA Calculator</h2>
-<p class="tool-description">Enter your letter grades.</p>
-
-<div class="form-group">
-<label>Class 1</label>
-<select class="gpa-grade">
-<option value="">Select grade</option>
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Class 2</label>
-<select class="gpa-grade">
-<option value="">Select grade</option>
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Class 3</label>
-<select class="gpa-grade">
-<option value="">Select grade</option>
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Class 4</label>
-<select class="gpa-grade">
-<option value="">Select grade</option>
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Class 5</label>
-<select class="gpa-grade">
-<option value="">Select grade</option>
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-</div>
-
-<button class="calculate-btn" onclick="calculateGPA()">Calculate GPA</button>
-
-<div class="result" id="gpaResult"></div>
-
-</div>
+    </div>
 </section>
 
-<!-- WEIGHTED GPA -->
+<!-- TOOL AREA -->
+<section class="tool-area" id="toolArea">
 
-<section class="tool-area" id="weightedTool">
-<div class="tool-panel">
+    <button class="back-btn" onclick="closeTool()">← Back to all tools</button>
 
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
+    <div class="tool-box" id="toolContent"></div>
 
-<h2>🎓 Weighted GPA Calculator</h2>
-<p class="tool-description">Select the grade and class level for each class.</p>
-
-<div id="weightedClasses"></div>
-
-<button class="calculate-btn" onclick="calculateWeightedGPA()">Calculate Weighted GPA</button>
-
-<div class="result" id="weightedResult"></div>
-
-</div>
-</section>
-
-<!-- FINAL GRADE -->
-
-<section class="tool-area" id="finalTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>🎯 Final Grade Calculator</h2>
-<p class="tool-description">Find out what score you need on your final.</p>
-
-<div class="form-group">
-<label>Current Grade (%)</label>
-<input id="currentGrade" type="number" placeholder="Example: 82">
-</div>
-
-<div class="form-group">
-<label>Final Exam Weight (%)</label>
-<input id="finalWeight" type="number" placeholder="Example: 20">
-</div>
-
-<div class="form-group">
-<label>Desired Final Grade (%)</label>
-<input id="desiredGrade" type="number" placeholder="Example: 85">
-</div>
-
-<button class="calculate-btn" onclick="calculateFinalGrade()">Calculate</button>
-
-<div class="result" id="finalResult"></div>
-
-</div>
-</section>
-
-<!-- PERCENT -->
-
-<section class="tool-area" id="percentTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>🧮 Percentage Calculator</h2>
-<p class="tool-description">Find X% of Y.</p>
-
-<div class="form-group">
-<label>Percentage</label>
-<input id="percentX" type="number" placeholder="Example: 20">
-</div>
-
-<div class="form-group">
-<label>Number</label>
-<input id="percentY" type="number" placeholder="Example: 150">
-</div>
-
-<button class="calculate-btn" onclick="calculatePercentage()">Calculate</button>
-
-<div class="result" id="percentResult"></div>
-
-</div>
-</section>
-
-<!-- PERCENT CHANGE -->
-
-<section class="tool-area" id="changeTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>📈 Percentage Change</h2>
-<p class="tool-description">Calculate the percentage increase or decrease.</p>
-
-<div class="form-group">
-<label>Original Value</label>
-<input id="oldValue" type="number" placeholder="Example: 50">
-</div>
-
-<div class="form-group">
-<label>New Value</label>
-<input id="newValue" type="number" placeholder="Example: 75">
-</div>
-
-<button class="calculate-btn" onclick="calculateChange()">Calculate</button>
-
-<div class="result" id="changeResult"></div>
-
-</div>
-</section>
-
-<!-- AVERAGE -->
-
-<section class="tool-area" id="averageTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>➗ Average Calculator</h2>
-<p class="tool-description">Enter numbers separated by commas.</p>
-
-<div class="form-group">
-<label>Numbers</label>
-<input id="averageNumbers" type="text" placeholder="Example: 90, 85, 92, 88">
-</div>
-
-<button class="calculate-btn" onclick="calculateAverage()">Calculate Average</button>
-
-<div class="result" id="averageResult"></div>
-
-</div>
-</section>
-
-<!-- WORD COUNTER -->
-
-<section class="tool-area" id="wordTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>📝 Word Counter</h2>
-<p class="tool-description">Paste or type your essay below.</p>
-
-<textarea id="wordText" rows="12" placeholder="Start typing..." oninput="updateWordCount()"></textarea>
-
-<div class="stats">
-
-<div class="stat">
-<strong id="wordCount">0</strong>
-<span>Words</span>
-</div>
-
-<div class="stat">
-<strong id="charCount">0</strong>
-<span>Characters</span>
-</div>
-
-<div class="stat">
-<strong id="sentenceCount">0</strong>
-<span>Sentences</span>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- TIMER -->
-
-<section class="tool-area" id="timerTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>⏱️ Study Timer</h2>
-<p class="tool-description">Focus for 25 minutes, then take a break.</p>
-
-<div class="timer-display" id="timerDisplay">25:00</div>
-
-<div class="timer-buttons">
-<button class="start" id="timerButton" onclick="toggleTimer()">Start</button>
-<button class="reset" onclick="resetTimer()">Reset</button>
-</div>
-
-</div>
-</section>
-
-<!-- COUNTDOWN -->
-
-<section class="tool-area" id="countdownTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>📅 Exam Countdown</h2>
-<p class="tool-description">Choose your exam date and time.</p>
-
-<div class="form-group">
-<label>Exam Name</label>
-<input id="examName" type="text" placeholder="Example: Algebra 2 Final">
-</div>
-
-<div class="form-group">
-<label>Exam Date & Time</label>
-<input id="examDate" type="datetime-local">
-</div>
-
-<button class="calculate-btn" onclick="startCountdown()">Start Countdown</button>
-
-<div class="result" id="countdownResult"></div>
-
-</div>
-</section>
-
-<!-- ASSIGNMENTS -->
-
-<section class="tool-area" id="assignmentTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>✅ Assignment Tracker</h2>
-<p class="tool-description">Your assignments are saved in your browser.</p>
-
-<div class="form-group">
-<label>Assignment</label>
-<input id="assignmentName" type="text" placeholder="Example: History Essay">
-</div>
-
-<div class="form-group">
-<label>Due Date</label>
-<input id="assignmentDate" type="date">
-</div>
-
-<button class="calculate-btn" onclick="addAssignment()">Add Assignment</button>
-
-<div id="assignmentList"></div>
-
-</div>
-</section>
-
-<!-- FLASHCARDS -->
-
-<section class="tool-area" id="flashcardTool">
-<div class="tool-panel">
-
-<button class="back-btn" onclick="closeTools()">← Back to tools</button>
-
-<h2>🃏 Flashcard Maker</h2>
-<p class="tool-description">Create flashcards and click the card to flip it.</p>
-
-<div class="form-group">
-<label>Question / Front</label>
-<input id="cardFront" type="text" placeholder="Example: What is photosynthesis?">
-</div>
-
-<div class="form-group">
-<label>Answer / Back</label>
-<input id="cardBack" type="text" placeholder="Example: The process plants use to make food.">
-</div>
-
-<button class="calculate-btn" onclick="addFlashcard()">Add Flashcard</button>
-
-<div class="flashcard">
-<div class="flashcard-inner" id="flashcardDisplay" onclick="flipFlashcard()">
-No flashcards yet.
-</div>
-</div>
-
-<div class="flash-buttons">
-<button onclick="previousCard()">← Previous</button>
-<button onclick="nextCard()">Next →</button>
-</div>
-
-</div>
 </section>
 
 <footer>
-<p>© 2026 StudentTools</p>
-<p style="margin-top:8px;">Free tools designed to make school a little easier.</p>
+    <p>© 2026 StudentTools · Made for students, by students.</p>
 </footer>
 
 <script>
 
 /* DARK MODE */
 
-function toggleDarkMode(){
-document.body.classList.toggle("dark");
-localStorage.setItem(
-"darkMode",
-document.body.classList.contains("dark")
-);
+function toggleDark() {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    localStorage.setItem("studenttools-dark", isDark);
+
+    document.getElementById("themeBtn").textContent = isDark ? "☀" : "☾";
 }
 
-if(localStorage.getItem("darkMode")==="true"){
-document.body.classList.add("dark");
+if (localStorage.getItem("studenttools-dark") === "true") {
+    document.body.classList.add("dark");
+    document.getElementById("themeBtn").textContent = "☀";
 }
 
 
-/* NAVIGATION */
+/* TOOL DATA */
 
-function openTool(id){
+const tools = {
 
-closeTools(false);
+gpa: {
+    icon: "🎓",
+    title: "GPA Calculator",
+    description: "Calculate your GPA using your class grades.",
+    html: `
+        <div class="row">
+            <div class="input-group">
+                <label>Grade 1</label>
+                <select class="gpa-grade">
+                    <option value="4">A</option>
+                    <option value="3">B</option>
+                    <option value="2">C</option>
+                    <option value="1">D</option>
+                    <option value="0">F</option>
+                </select>
+            </div>
 
-document.getElementById(id).classList.add("active");
+            <div class="input-group">
+                <label>Grade 2</label>
+                <select class="gpa-grade">
+                    <option value="4">A</option>
+                    <option value="3">B</option>
+                    <option value="2">C</option>
+                    <option value="1">D</option>
+                    <option value="0">F</option>
+                </select>
+            </div>
+        </div>
 
-document.getElementById(id).scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
+        <div id="gpaExtra"></div>
 
-if(id==="weightedTool") buildWeightedClasses();
-if(id==="assignmentTool") renderAssignments();
-if(id==="flashcardTool") renderFlashcard();
+        <button class="add-btn" onclick="addGpaClass()">+ Add Class</button>
+        <button class="calc-btn" onclick="calculateGPA()">Calculate GPA</button>
+
+        <div class="result" id="gpaResult" style="display:none"></div>
+    `
+},
+
+weighted: {
+    icon: "⭐",
+    title: "Weighted GPA",
+    description: "Calculate GPA using regular, honors, and AP classes.",
+    html: `
+        <div id="weightedRows">
+
+            <div class="weighted-row">
+                <input class="input" placeholder="Class">
+                <select class="weighted-grade">
+                    <option value="4">A</option>
+                    <option value="3">B</option>
+                    <option value="2">C</option>
+                    <option value="1">D</option>
+                    <option value="0">F</option>
+                </select>
+                <select class="weight">
+                    <option value="0">Regular</option>
+                    <option value="0.5">Honors</option>
+                    <option value="1">AP</option>
+                </select>
+                <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
+            </div>
+
+        </div>
+
+        <button class="add-btn" onclick="addWeighted()">+ Add Class</button>
+        <button class="calc-btn" onclick="calculateWeighted()">Calculate Weighted GPA</button>
+
+        <div class="result" id="weightedResult" style="display:none"></div>
+    `
+},
+
+final: {
+    icon: "📊",
+    title: "Final Grade Calculator",
+    description: "Find out what you need on your final exam.",
+    html: `
+        <div class="input-group">
+            <label>Current Grade (%)</label>
+            <input class="input" id="currentGrade" type="number" placeholder="Example: 87">
+        </div>
+
+        <div class="input-group">
+            <label>Final Exam Weight (%)</label>
+            <input class="input" id="finalWeight" type="number" placeholder="Example: 20">
+        </div>
+
+        <div class="input-group">
+            <label>Desired Overall Grade (%)</label>
+            <input class="input" id="desiredGrade" type="number" placeholder="Example: 90">
+        </div>
+
+        <button class="calc-btn" onclick="calculateFinal()">Calculate Required Grade</button>
+
+        <div class="result" id="finalResult" style="display:none"></div>
+    `
+},
+
+percentage: {
+    icon: "％",
+    title: "Percentage Calculator",
+    description: "Find what percentage one number is of another.",
+    html: `
+        <div class="input-group">
+            <label>What is</label>
+            <input class="input" id="percentA" type="number" placeholder="Example: 25">
+        </div>
+
+        <div class="input-group">
+            <label>Percent of</label>
+            <input class="input" id="percentB" type="number" placeholder="Example: 100">
+        </div>
+
+        <button class="calc-btn" onclick="calculatePercentage()">Calculate</button>
+
+        <div class="result" id="percentageResult" style="display:none"></div>
+    `
+},
+
+change: {
+    icon: "↗",
+    title: "Percentage Change",
+    description: "Calculate the percentage increase or decrease.",
+    html: `
+        <div class="input-group">
+            <label>Original Value</label>
+            <input class="input" id="oldValue" type="number">
+        </div>
+
+        <div class="input-group">
+            <label>New Value</label>
+            <input class="input" id="newValue" type="number">
+        </div>
+
+        <button class="calc-btn" onclick="calculateChange()">Calculate Change</button>
+
+        <div class="result" id="changeResult" style="display:none"></div>
+    `
+},
+
+average: {
+    icon: "∑",
+    title: "Average Calculator",
+    description: "Enter numbers separated by commas.",
+    html: `
+        <div class="input-group">
+            <label>Numbers</label>
+            <input class="input" id="averageInput" placeholder="Example: 90, 85, 92, 88">
+        </div>
+
+        <button class="calc-btn" onclick="calculateAverage()">Calculate Average</button>
+
+        <div class="result" id="averageResult" style="display:none"></div>
+    `
+},
+
+words: {
+    icon: "Aa",
+    title: "Word Counter",
+    description: "Count words and characters in your writing.",
+    html: `
+        <div class="input-group">
+            <label>Your text</label>
+            <textarea id="wordText" rows="10" placeholder="Start typing..."></textarea>
+        </div>
+
+        <div class="result" id="wordResult">
+            Words: <strong id="wordNumber">0</strong>
+            Characters: <strong id="charNumber">0</strong>
+        </div>
+    `
+},
+
+timer: {
+    icon: "⏱",
+    title: "Study Timer",
+    description: "Focus and study without distractions.",
+    html: `
+        <div class="timer-display" id="timerDisplay">25:00</div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Minutes</label>
+                <input class="input" id="timerMinutes" type="number" value="25" min="1">
+            </div>
+
+            <div></div>
+        </div>
+
+        <div class="timer-controls">
+            <button class="calc-btn" onclick="startTimer()">Start</button>
+            <button class="secondary-btn" onclick="pauseTimer()">Pause</button>
+            <button class="secondary-btn" onclick="resetTimer()">Reset</button>
+        </div>
+    `
+},
+
+countdown: {
+    icon: "⌛",
+    title: "Exam Countdown",
+    description: "Set a date and see how much time remains.",
+    html: `
+        <div class="input-group">
+            <label>Exam Date & Time</label>
+            <input class="input" id="examDate" type="datetime-local">
+        </div>
+
+        <button class="calc-btn" onclick="startCountdown()">Start Countdown</button>
+
+        <div class="result" id="countdownResult">
+            Enter your exam date above.
+        </div>
+    `
+},
+
+assignments: {
+    icon: "✓",
+    title: "Assignment Tracker",
+    description: "Save and track your homework.",
+    html: `
+        <div class="row">
+            <input class="input" id="assignmentName" placeholder="Assignment name">
+            <input class="input" id="assignmentDate" type="date">
+        </div>
+
+        <button class="calc-btn" onclick="addAssignment()">Add Assignment</button>
+
+        <div style="margin-top:20px" id="assignmentList"></div>
+    `
+},
+
+flashcards: {
+    icon: "▣",
+    title: "Flashcard Maker",
+    description: "Create flashcards and test yourself.",
+    html: `
+        <div class="row">
+            <input class="input" id="cardQuestion" placeholder="Question">
+            <input class="input" id="cardAnswer" placeholder="Answer">
+        </div>
+
+        <button class="calc-btn" onclick="addFlashcard()">Add Flashcard</button>
+
+        <div style="margin-top:20px" id="flashcardList"></div>
+    `
 }
 
-function closeTools(scroll=true){
+};
 
-document.querySelectorAll(".tool-area").forEach(t=>{
-t.classList.remove("active");
-});
 
-if(scroll){
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+/* OPEN TOOL */
+
+function openTool(name) {
+
+    const tool = tools[name];
+
+    document.getElementById("tools").style.display = "none";
+    document.querySelector(".hero").style.display = "none";
+
+    const area = document.getElementById("toolArea");
+
+    area.classList.add("active");
+
+    document.getElementById("toolContent").innerHTML = `
+        <div class="tool-top">
+            <div class="tool-top-icon">${tool.icon}</div>
+            <div>
+                <h2>${tool.title}</h2>
+                <p>${tool.description}</p>
+            </div>
+        </div>
+
+        ${tool.html}
+    `;
+
+    area.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    if (name === "words") {
+        document.getElementById("wordText").addEventListener("input", updateWords);
+    }
+
+    if (name === "assignments") {
+        renderAssignments();
+    }
+
+    if (name === "flashcards") {
+        renderFlashcards();
+    }
 }
-}
 
-function goHome(){
-closeTools();
+
+/* CLOSE TOOL */
+
+function closeTool() {
+
+    document.getElementById("toolArea").classList.remove("active");
+    document.getElementById("tools").style.display = "";
+    document.querySelector(".hero").style.display = "";
+
+    document.getElementById("tools").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
 
 /* SEARCH */
 
-function searchTools(){
+function searchTools() {
 
-const search=document
-.getElementById("searchInput")
-.value
-.toLowerCase();
+    const query = document.getElementById("search").value.toLowerCase().trim();
 
-document.querySelectorAll(".tool-card").forEach(card=>{
+    const cards = document.querySelectorAll(".tool-card");
 
-const name=card.dataset.name.toLowerCase();
+    let visible = 0;
 
-card.style.display=name.includes(search)?"":"none";
+    cards.forEach(card => {
 
-});
+        const name = card.dataset.name;
+
+        if (name.includes(query)) {
+            card.style.display = "";
+            visible++;
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+    document.getElementById("toolCount").textContent =
+        visible + (visible === 1 ? " tool" : " tools");
 }
 
 
 /* GPA */
 
-function calculateGPA(){
+function addGpaClass() {
 
-const grades=document.querySelectorAll(".gpa-grade");
+    const extra = document.getElementById("gpaExtra");
 
-let total=0;
-let count=0;
+    const div = document.createElement("div");
 
-grades.forEach(g=>{
-if(g.value!==""){
-total+=Number(g.value);
-count++;
-}
-});
+    div.className = "input-group";
 
-const result=document.getElementById("gpaResult");
+    div.innerHTML = `
+        <label>Additional Grade</label>
+        <select class="gpa-grade">
+            <option value="4">A</option>
+            <option value="3">B</option>
+            <option value="2">C</option>
+            <option value="1">D</option>
+            <option value="0">F</option>
+        </select>
+    `;
 
-if(count===0){
-result.innerText="Please enter at least one grade.";
-}else{
-result.innerHTML="Your GPA is <strong>"+
-(total/count).toFixed(2)+
-"</strong> / 4.00";
+    extra.appendChild(div);
 }
 
-result.classList.add("show");
+function calculateGPA() {
+
+    const grades = [...document.querySelectorAll(".gpa-grade")]
+        .map(x => Number(x.value));
+
+    if (!grades.length) return;
+
+    const total = grades.reduce((a,b) => a+b, 0);
+
+    const gpa = total / grades.length;
+
+    const result = document.getElementById("gpaResult");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        Your GPA
+        <strong>${gpa.toFixed(2)}</strong>
+    `;
 }
 
 
 /* WEIGHTED GPA */
 
-function buildWeightedClasses(){
+function addWeighted() {
 
-const container=document.getElementById("weightedClasses");
+    const container = document.getElementById("weightedRows");
 
-if(container.children.length>0)return;
+    const row = document.createElement("div");
 
-for(let i=1;i<=5;i++){
+    row.className = "weighted-row";
 
-container.innerHTML+=`
+    row.innerHTML = `
+        <input class="input" placeholder="Class">
 
-<div class="tool-row" style="margin-bottom:12px">
+        <select class="weighted-grade">
+            <option value="4">A</option>
+            <option value="3">B</option>
+            <option value="2">C</option>
+            <option value="1">D</option>
+            <option value="0">F</option>
+        </select>
 
-<div class="form-group">
-<label>Class ${i} Grade</label>
-<select class="weighted-grade">
-<option value="">Select</option>
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-</div>
+        <select class="weight">
+            <option value="0">Regular</option>
+            <option value="0.5">Honors</option>
+            <option value="1">AP</option>
+        </select>
 
-<div class="form-group">
-<label>Level</label>
-<select class="weighted-level">
-<option value="regular">Regular</option>
-<option value="honors">Honors</option>
-<option value="ap">AP</option>
-</select>
-</div>
+        <button class="remove-btn" onclick="this.parentElement.remove()">×</button>
+    `;
 
-</div>
-
-`;
-
-}
+    container.appendChild(row);
 }
 
-function calculateWeightedGPA(){
+function calculateWeighted() {
 
-const grades=document.querySelectorAll(".weighted-grade");
-const levels=document.querySelectorAll(".weighted-level");
+    const grades = [...document.querySelectorAll(".weighted-grade")];
+    const weights = [...document.querySelectorAll(".weight")];
 
-let total=0;
-let count=0;
+    if (!grades.length) return;
 
-grades.forEach((grade,i)=>{
+    let total = 0;
 
-if(grade.value!==""){
+    for (let i = 0; i < grades.length; i++) {
+        total += Number(grades[i].value) + Number(weights[i].value);
+    }
 
-let points=Number(grade.value);
+    const gpa = total / grades.length;
 
-if(levels[i].value==="honors")points+=0.5;
-if(levels[i].value==="ap")points+=1;
+    const result = document.getElementById("weightedResult");
 
-total+=points;
-count++;
+    result.style.display = "block";
 
-}
-});
-
-const result=document.getElementById("weightedResult");
-
-if(count===0){
-result.innerText="Please enter at least one grade.";
-}else{
-result.innerHTML="Your weighted GPA is <strong>"+
-(total/count).toFixed(2)+
-"</strong>";
-}
-
-result.classList.add("show");
+    result.innerHTML = `
+        Weighted GPA
+        <strong>${gpa.toFixed(2)}</strong>
+    `;
 }
 
 
 /* FINAL GRADE */
 
-function calculateFinalGrade(){
+function calculateFinal() {
 
-const current=Number(
-document.getElementById("currentGrade").value
-);
+    const current = Number(document.getElementById("currentGrade").value);
+    const weight = Number(document.getElementById("finalWeight").value);
+    const desired = Number(document.getElementById("desiredGrade").value);
 
-const weight=Number(
-document.getElementById("finalWeight").value
-);
+    if (
+        !isFinite(current) ||
+        !isFinite(weight) ||
+        !isFinite(desired) ||
+        weight <= 0 ||
+        weight >= 100
+    ) {
+        alert("Please enter valid numbers.");
+        return;
+    }
 
-const desired=Number(
-document.getElementById("desiredGrade").value
-);
+    const needed =
+        (desired - current * (1 - weight / 100))
+        / (weight / 100);
 
-const result=document.getElementById("finalResult");
+    const result = document.getElementById("finalResult");
 
-if(!Number.isFinite(current)||
-!Number.isFinite(weight)||
-!Number.isFinite(desired)||
-weight<=0||
-weight>100){
+    result.style.display = "block";
 
-result.innerText="Please enter valid numbers.";
-result.classList.add("show");
-return;
-}
+    if (needed <= 0) {
 
-const needed=
-(desired-current*(1-weight/100))
-/(weight/100);
+        result.innerHTML = `
+            You already have enough!
+            <strong>0%</strong>
+        `;
 
-if(needed>100){
+    } else if (needed > 100) {
 
-result.innerText=
-"You would need more than 100%, so that target isn't possible.";
+        result.innerHTML = `
+            You would need more than 100%.
+            <strong>${needed.toFixed(1)}%</strong>
+        `;
 
-}else if(needed<=0){
+    } else {
 
-result.innerText=
-"You already have enough points to reach your desired grade.";
-
-}else{
-
-result.innerHTML=
-"You need <strong>"+
-needed.toFixed(2)+
-"%</strong> on your final.";
-
-}
-
-result.classList.add("show");
+        result.innerHTML = `
+            You need about
+            <strong>${needed.toFixed(1)}%</strong>
+        `;
+    }
 }
 
 
 /* PERCENTAGE */
 
-function calculatePercentage(){
+function calculatePercentage() {
 
-const x=Number(document.getElementById("percentX").value);
-const y=Number(document.getElementById("percentY").value);
+    const a = Number(document.getElementById("percentA").value);
+    const b = Number(document.getElementById("percentB").value);
 
-const result=document.getElementById("percentResult");
+    if (!b) {
+        alert("Please enter a valid second number.");
+        return;
+    }
 
-if(!Number.isFinite(x)||!Number.isFinite(y)){
+    const answer = (a / b) * 100;
 
-result.innerText="Please enter valid numbers.";
+    const result = document.getElementById("percentageResult");
 
-}else{
+    result.style.display = "block";
 
-result.innerHTML=
-"<strong>"+x+"%</strong> of <strong>"+
-y+"</strong> is <strong>"+
-((x/100)*y).toFixed(2)+
-"</strong>";
-
-}
-
-result.classList.add("show");
+    result.innerHTML = `
+        Percentage
+        <strong>${answer.toFixed(2)}%</strong>
+    `;
 }
 
 
 /* PERCENTAGE CHANGE */
 
-function calculateChange(){
+function calculateChange() {
 
-const oldValue=Number(
-document.getElementById("oldValue").value
-);
+    const oldValue = Number(document.getElementById("oldValue").value);
+    const newValue = Number(document.getElementById("newValue").value);
 
-const newValue=Number(
-document.getElementById("newValue").value
-);
+    if (!oldValue) {
+        alert("Original value cannot be zero.");
+        return;
+    }
 
-const result=document.getElementById("changeResult");
+    const change = ((newValue - oldValue) / Math.abs(oldValue)) * 100;
 
-if(!Number.isFinite(oldValue)||
-!Number.isFinite(newValue)||
-oldValue===0){
+    const direction =
+        change > 0 ? "increase" :
+        change < 0 ? "decrease" :
+        "no change";
 
-result.innerText="Please enter valid numbers.";
+    const result = document.getElementById("changeResult");
 
-}else{
+    result.style.display = "block";
 
-const change=((newValue-oldValue)/Math.abs(oldValue))*100;
-
-result.innerHTML=
-"Percentage change: <strong>"+
-change.toFixed(2)+
-"%</strong>";
-
-}
-
-result.classList.add("show");
+    result.innerHTML = `
+        ${direction}
+        <strong>${Math.abs(change).toFixed(2)}%</strong>
+    `;
 }
 
 
 /* AVERAGE */
 
-function calculateAverage(){
+function calculateAverage() {
 
-const input=document
-.getElementById("averageNumbers")
-.value;
+    const values = document.getElementById("averageInput")
+        .value
+        .split(",")
+        .map(Number)
+        .filter(x => !isNaN(x));
 
-const numbers=input
-.split(",")
-.map(x=>Number(x.trim()))
-.filter(x=>Number.isFinite(x));
+    if (!values.length) {
+        alert("Enter some numbers separated by commas.");
+        return;
+    }
 
-const result=document.getElementById("averageResult");
+    const average =
+        values.reduce((a,b) => a+b, 0) / values.length;
 
-if(numbers.length===0){
+    const result = document.getElementById("averageResult");
 
-result.innerText="Please enter numbers separated by commas.";
+    result.style.display = "block";
 
-}else{
-
-const average=
-numbers.reduce((a,b)=>a+b,0)/numbers.length;
-
-result.innerHTML=
-"The average is <strong>"+
-average.toFixed(2)+
-"</strong>";
-
-}
-
-result.classList.add("show");
+    result.innerHTML = `
+        Average
+        <strong>${average.toFixed(2)}</strong>
+    `;
 }
 
 
 /* WORD COUNTER */
 
-function updateWordCount(){
+function updateWords() {
 
-const text=document.getElementById("wordText").value;
+    const text = document.getElementById("wordText").value;
 
-const trimmed=text.trim();
+    const words = text.trim()
+        ? text.trim().split(/\s+/).length
+        : 0;
 
-const words=
-trimmed===""?0:
-trimmed.split(/\s+/).length;
-
-const characters=text.length;
-
-const sentences=
-trimmed===""?0:
-(trimmed.match(/[.!?]+/g)||[]).length;
-
-document.getElementById("wordCount").innerText=words;
-document.getElementById("charCount").innerText=characters;
-document.getElementById("sentenceCount").innerText=sentences;
+    document.getElementById("wordNumber").textContent = words;
+    document.getElementById("charNumber").textContent = text.length;
 }
 
 
-/* STUDY TIMER */
+/* TIMER */
 
-let timerSeconds=25*60;
-let timerInterval=null;
-let timerRunning=false;
+let timerInterval = null;
+let timerSeconds = 1500;
 
-function updateTimerDisplay(){
+function updateTimerDisplay() {
 
-const minutes=Math.floor(timerSeconds/60);
-const seconds=timerSeconds%60;
+    const minutes =
+        Math.floor(timerSeconds / 60)
+        .toString()
+        .padStart(2, "0");
 
-document.getElementById("timerDisplay").innerText=
-String(minutes).padStart(2,"0")+
-":"+
-String(seconds).padStart(2,"0");
+    const seconds =
+        (timerSeconds % 60)
+        .toString()
+        .padStart(2, "0");
+
+    const display = document.getElementById("timerDisplay");
+
+    if (display) {
+        display.textContent = `${minutes}:${seconds}`;
+    }
 }
 
-function toggleTimer(){
+function startTimer() {
 
-const button=document.getElementById("timerButton");
+    const minutes = Number(
+        document.getElementById("timerMinutes").value
+    );
 
-if(timerRunning){
+    if (timerSeconds === 0 || timerSeconds === 1500) {
+        timerSeconds = Math.max(1, minutes) * 60;
+    }
 
-clearInterval(timerInterval);
-timerRunning=false;
-button.innerText="Start";
-return;
+    clearInterval(timerInterval);
 
+    timerInterval = setInterval(() => {
+
+        if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            alert("Study session complete! 🎉");
+            return;
+        }
+
+        timerSeconds--;
+        updateTimerDisplay();
+
+    }, 1000);
 }
 
-timerRunning=true;
-button.innerText="Pause";
-
-timerInterval=setInterval(()=>{
-
-if(timerSeconds<=0){
-
-clearInterval(timerInterval);
-timerRunning=false;
-button.innerText="Start";
-
-alert("🎉 Study session complete!");
-
-return;
+function pauseTimer() {
+    clearInterval(timerInterval);
 }
 
-timerSeconds--;
-updateTimerDisplay();
+function resetTimer() {
 
-},1000);
-}
+    clearInterval(timerInterval);
 
-function resetTimer(){
+    const minutes = Number(
+        document.getElementById("timerMinutes").value
+    ) || 25;
 
-clearInterval(timerInterval);
+    timerSeconds = minutes * 60;
 
-timerSeconds=25*60;
-timerRunning=false;
-
-document.getElementById("timerButton").innerText="Start";
-
-updateTimerDisplay();
-}
-
-updateTimerDisplay();
-
-
-/* EXAM COUNTDOWN */
-
-let countdownInterval=null;
-
-function startCountdown(){
-
-clearInterval(countdownInterval);
-
-const name=document.getElementById("examName").value||
-"Your exam";
-
-const date=document.getElementById("examDate").value;
-
-const result=document.getElementById("countdownResult");
-
-if(!date){
-
-result.innerText="Please choose an exam date.";
-
-result.classList.add("show");
-
-return;
-}
-
-const target=new Date(date).getTime();
-
-function update(){
-
-const now=new Date().getTime();
-const distance=target-now;
-
-if(distance<=0){
-
-result.innerHTML=
-"<strong>"+name+
-"</strong> is happening now or has passed!";
-
-clearInterval(countdownInterval);
-
-return;
-}
-
-const days=Math.floor(distance/(1000*60*60*24));
-const hours=Math.floor(
-(distance%(1000*60*60*24))/(1000*60*60)
-);
-const minutes=Math.floor(
-(distance%(1000*60*60))/(1000*60)
-);
-const seconds=Math.floor(
-(distance%(1000*60))/1000
-);
-
-result.innerHTML=
-"<strong>"+name+"</strong><br><br>"+
-days+" days · "+
-hours+" hours · "+
-minutes+" minutes · "+
-seconds+" seconds";
-
-result.classList.add("show");
-}
-
-update();
-
-countdownInterval=setInterval(update,1000);
+    updateTimerDisplay();
 }
 
 
-/* ASSIGNMENT TRACKER */
+/* COUNTDOWN */
 
-let assignments=
-JSON.parse(localStorage.getItem("assignments")||"[]");
+let countdownInterval = null;
 
-function addAssignment(){
+function startCountdown() {
 
-const name=document
-.getElementById("assignmentName")
-.value.trim();
+    clearInterval(countdownInterval);
 
-const date=document
-.getElementById("assignmentDate")
-.value;
+    const input = document.getElementById("examDate").value;
 
-if(!name||!date){
+    if (!input) {
+        alert("Choose an exam date.");
+        return;
+    }
 
-alert("Please enter an assignment and due date.");
+    const target = new Date(input).getTime();
 
-return;
+    function update() {
+
+        const now = Date.now();
+        const difference = target - now;
+
+        const result =
+            document.getElementById("countdownResult");
+
+        if (difference <= 0) {
+
+            clearInterval(countdownInterval);
+
+            result.innerHTML = `
+                Your exam time has arrived!
+                <strong>Good luck! 🎓</strong>
+            `;
+
+            return;
+        }
+
+        const days = Math.floor(
+            difference / (1000 * 60 * 60 * 24)
+        );
+
+        const hours = Math.floor(
+            difference / (1000 * 60 * 60)
+        ) % 24;
+
+        const minutes = Math.floor(
+            difference / (1000 * 60)
+        ) % 60;
+
+        const seconds = Math.floor(
+            difference / 1000
+        ) % 60;
+
+        result.innerHTML = `
+            Time remaining
+            <strong>
+                ${days}d ${hours}h ${minutes}m ${seconds}s
+            </strong>
+        `;
+    }
+
+    update();
+
+    countdownInterval = setInterval(update, 1000);
 }
 
-assignments.push({
-name:name,
-date:date
-});
 
-localStorage.setItem(
-"assignments",
-JSON.stringify(assignments)
-);
+/* ASSIGNMENTS */
 
-document.getElementById("assignmentName").value="";
-document.getElementById("assignmentDate").value="";
+let assignments =
+    JSON.parse(localStorage.getItem("studenttools-assignments")) || [];
 
-renderAssignments();
+function saveAssignments() {
+
+    localStorage.setItem(
+        "studenttools-assignments",
+        JSON.stringify(assignments)
+    );
 }
 
-function deleteAssignment(index){
+function addAssignment() {
 
-assignments.splice(index,1);
+    const name =
+        document.getElementById("assignmentName").value.trim();
 
-localStorage.setItem(
-"assignments",
-JSON.stringify(assignments)
-);
+    const date =
+        document.getElementById("assignmentDate").value;
 
-renderAssignments();
+    if (!name) {
+        alert("Enter an assignment name.");
+        return;
+    }
+
+    assignments.push({
+        name,
+        date,
+        done: false
+    });
+
+    saveAssignments();
+
+    document.getElementById("assignmentName").value = "";
+
+    renderAssignments();
 }
 
-function renderAssignments(){
+function toggleAssignment(index) {
 
-const list=document.getElementById("assignmentList");
+    assignments[index].done =
+        !assignments[index].done;
 
-if(assignments.length===0){
-
-list.innerHTML=
-"<p style='color:var(--muted);margin-top:20px'>No assignments yet.</p>";
-
-return;
+    saveAssignments();
+    renderAssignments();
 }
 
-assignments.sort((a,b)=>a.date.localeCompare(b.date));
+function deleteAssignment(index) {
 
-list.innerHTML="";
+    assignments.splice(index, 1);
 
-assignments.forEach((a,index)=>{
+    saveAssignments();
+    renderAssignments();
+}
 
-list.innerHTML+=`
+function renderAssignments() {
 
-<div class="assignment">
+    const list =
+        document.getElementById("assignmentList");
 
-<div class="assignment-info">
+    if (!list) return;
 
-<strong>${escapeHTML(a.name)}</strong>
+    if (!assignments.length) {
 
-<small>Due: ${escapeHTML(a.date)}</small>
+        list.innerHTML =
+            `<p style="color:var(--muted);text-align:center;padding:20px">
+                No assignments yet.
+            </p>`;
 
-</div>
+        return;
+    }
 
-<button class="delete-btn"
-onclick="deleteAssignment(${index})">
-Delete
-</button>
+    list.innerHTML = assignments.map((item,index) => `
 
-</div>
+        <div class="assignment ${item.done ? "done" : ""}">
 
-`;
+            <input
+                type="checkbox"
+                ${item.done ? "checked" : ""}
+                onchange="toggleAssignment(${index})"
+            >
 
-});
+            <div class="assignment-info">
+                <strong>${escapeHTML(item.name)}</strong>
+                <span>${item.date || "No due date"}</span>
+            </div>
+
+            <button
+                class="delete-btn"
+                onclick="deleteAssignment(${index})"
+            >
+                Delete
+            </button>
+
+        </div>
+
+    `).join("");
 }
 
 
 /* FLASHCARDS */
 
-let flashcards=
-JSON.parse(localStorage.getItem("flashcards")||"[]");
+let flashcards =
+    JSON.parse(localStorage.getItem("studenttools-flashcards")) || [];
 
-let currentCard=0;
-let cardFlipped=false;
+function saveFlashcards() {
 
-function escapeHTML(text){
-
-const div=document.createElement("div");
-div.textContent=text;
-return div.innerHTML;
+    localStorage.setItem(
+        "studenttools-flashcards",
+        JSON.stringify(flashcards)
+    );
 }
 
-function addFlashcard(){
+function addFlashcard() {
 
-const front=document.getElementById("cardFront").value.trim();
-const back=document.getElementById("cardBack").value.trim();
+    const question =
+        document.getElementById("cardQuestion").value.trim();
 
-if(!front||!back){
+    const answer =
+        document.getElementById("cardAnswer").value.trim();
 
-alert("Please enter both the question and answer.");
+    if (!question || !answer) {
+        alert("Enter both a question and an answer.");
+        return;
+    }
 
-return;
+    flashcards.push({
+        question,
+        answer
+    });
+
+    saveFlashcards();
+
+    document.getElementById("cardQuestion").value = "";
+    document.getElementById("cardAnswer").value = "";
+
+    renderFlashcards();
 }
 
-flashcards.push({
-front:front,
-back:back
-});
+function deleteFlashcard(index) {
 
-localStorage.setItem(
-"flashcards",
-JSON.stringify(flashcards)
-);
+    flashcards.splice(index, 1);
 
-document.getElementById("cardFront").value="";
-document.getElementById("cardBack").value="";
+    saveFlashcards();
 
-currentCard=flashcards.length-1;
-
-renderFlashcard();
+    renderFlashcards();
 }
 
-function renderFlashcard(){
+function renderFlashcards() {
 
-const display=document.getElementById("flashcardDisplay");
+    const list =
+        document.getElementById("flashcardList");
 
-if(flashcards.length===0){
+    if (!list) return;
 
-display.innerHTML="No flashcards yet.";
-return;
+    if (!flashcards.length) {
+
+        list.innerHTML =
+            `<p style="color:var(--muted);text-align:center;padding:20px">
+                No flashcards yet.
+            </p>`;
+
+        return;
+    }
+
+    list.innerHTML = flashcards.map((card,index) => `
+
+        <div
+            class="flashcard"
+            onclick="flipCard(${index})"
+            id="card-${index}"
+        >
+            <div>
+                <small style="color:var(--muted)">
+                    Question
+                </small>
+
+                <h3>
+                    ${escapeHTML(card.question)}
+                </h3>
+            </div>
+        </div>
+
+        <button
+            class="delete-btn"
+            onclick="event.stopPropagation();deleteFlashcard(${index})"
+        >
+            Delete flashcard
+        </button>
+
+    `).join("");
 }
 
-const card=flashcards[currentCard];
+function flipCard(index) {
 
-if(cardFlipped){
+    const element =
+        document.getElementById(`card-${index}`);
 
-display.innerHTML=
-escapeHTML(card.back)+
-"<small>Click to see question</small>";
+    const card = flashcards[index];
 
-}else{
+    const showingAnswer =
+        element.dataset.answer === "true";
 
-display.innerHTML=
-escapeHTML(card.front)+
-"<small>Click to reveal answer</small>";
+    if (showingAnswer) {
 
+        element.innerHTML = `
+            <div>
+                <small style="color:var(--muted)">
+                    Question
+                </small>
+                <h3>${escapeHTML(card.question)}</h3>
+            </div>
+        `;
+
+        element.dataset.answer = "false";
+
+    } else {
+
+        element.innerHTML = `
+            <div>
+                <small style="color:var(--muted)">
+                    Answer
+                </small>
+                <h3>${escapeHTML(card.answer)}</h3>
+            </div>
+        `;
+
+        element.dataset.answer = "true";
+    }
 }
-}
 
-function flipFlashcard(){
 
-if(flashcards.length===0)return;
+/* SECURITY */
 
-cardFlipped=!cardFlipped;
+function escapeHTML(text) {
 
-renderFlashcard();
-}
-
-function nextCard(){
-
-if(flashcards.length===0)return;
-
-currentCard=
-(currentCard+1)%flashcards.length;
-
-cardFlipped=false;
-
-renderFlashcard();
-}
-
-function previousCard(){
-
-if(flashcards.length===0)return;
-
-currentCard=
-(currentCard-1+flashcards.length)%flashcards.length;
-
-cardFlipped=false;
-
-renderFlashcard();
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 }
 
 </script>
