@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudentTools — Free Student Tools</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --success: #16a34a;
+    --shadow: 0 10px 30px rgba(0,0,0,.07);
+}
+
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #334155;
+    --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: .25s;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 70px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon-btn {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 75px 20px 55px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: #eef2ff;
+    color: var(--primary);
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.dark .hero-badge {
+    background: #312e81;
+    color: #c7d2fe;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.gradient {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 19px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* SEARCH */
+
+.search-box {
+    max-width: 600px;
+    margin: 0 auto 45px;
+    padding: 0 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 17px 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    box-shadow: var(--shadow);
+}
+
+.search-box input:focus {
+    border-color: var(--primary);
+}
+
+/* TOOLS */
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-bottom: 60px;
+}
+
+.tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: .2s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+}
+
+.tool-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.tool-card h3 {
+    margin-bottom: 8px;
+}
+
+.tool-card p {
+    color: var(--muted);
+    line-height: 1.5;
+    min-height: 45px;
+}
+
+.open-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.open-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* TOOL AREA */
+
+.tool-area {
+    display: none;
+    width: 90%;
+    max-width: 650px;
+    margin: 0 auto 70px;
+}
+
+.tool-area.active {
+    display: block;
+}
+
+.tool-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.tool-panel h2 {
+    margin-bottom: 8px;
+}
+
+.tool-description {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 10px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #eef2ff;
+    color: #3730a3;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.dark .result {
+    background: #312e81;
+    color: #e0e7ff;
+}
+
+.result.show {
+    display: block;
+}
+
+/* TIMER */
+
+.timer-display {
+    font-size: 65px;
+    text-align: center;
+    font-weight: 800;
+    margin: 30px 0;
+    letter-spacing: 2px;
+}
+
+.timer-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.timer-buttons button {
+    flex: 1;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.start {
+    background: var(--primary);
+    color: white;
+}
+
+.reset {
+    background: var(--border);
+    color: var(--text);
+}
+
+/* WORD COUNTER */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.stat {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding-top: 55px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-panel {
+        padding: 22px;
+    }
+
+    .timer-display {
+        font-size: 48px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo" onclick="goHome()">
+        StudentTools
+    </div>
+
+    <div class="nav-right">
+        <button class="icon-btn" onclick="toggleDarkMode()" title="Dark mode">
+            🌙
+        </button>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-badge">
+        ✨ Free tools for students
+    </div>
+
+    <h1>
+        School just got<br>
+        <span class="gradient">a little easier.</span>
+    </h1>
+
+    <p>
+        Calculate grades, track your study time, count words,
+        and use useful student tools — all in one place.
+    </p>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <input
+        id="searchInput"
+        type="text"
+        placeholder="🔍 Search for a tool..."
+        oninput="searchTools()"
+    >
+
+</div>
+
+
+<!-- TOOLS -->
+
+<main class="container">
+
+    <div class="section-title">
+        <h2>Student Tools</h2>
+        <p>Everything you need in one place.</p>
+    </div>
+
+
+    <div class="tools-grid" id="toolsGrid">
+
+        <!-- GPA -->
+
+        <div class="tool-card" data-name="gpa grade average">
+
+            <div class="tool-icon">📊</div>
+
+            <h3>GPA Calculator</h3>
+
+            <p>
+                Quickly calculate your GPA from your grades.
+            </p>
+
+            <button class="open-btn" onclick="openTool('gpaTool')">
+                Open Calculator
+            </button>
+
+        </div>
+
+
+        <!-- FINAL GRADE -->
+
+        <div class="tool-card" data-name="final grade exam grade needed">
+
+            <div class="tool-icon">🎯</div>
+
+            <h3>Final Grade Calculator</h3>
+
+            <p>
+                Find out what score you need on your final exam.
+            </p>
+
+            <button class="open-btn" onclick="openTool('finalTool')">
+                Open Calculator
+            </button>
+
+        </div>
+
+
+        <!-- PERCENTAGE -->
+
+        <div class="tool-card" data-name="percentage percent calculator">
+
+            <div class="tool-icon">🧮</div>
+
+            <h3>Percentage Calculator</h3>
+
+            <p>
+                Calculate percentages quickly and easily.
+            </p>
+
+            <button class="open-btn" onclick="openTool('percentTool')">
+                Open Calculator
+            </button>
+
+        </div>
+
+
+        <!-- WORD COUNTER -->
+
+        <div class="tool-card" data-name="word counter character essay">
+
+            <div class="tool-icon">📝</div>
+
+            <h3>Word Counter</h3>
+
+            <p>
+                Count words, characters, sentences and paragraphs.
+            </p>
+
+            <button class="open-btn" onclick="openTool('wordTool')">
+                Open Counter
+            </button>
+
+        </div>
+
+
+        <!-- TIMER -->
+
+        <div class="tool-card" data-name="study timer pomodoro focus">
+
+            <div class="tool-icon">⏱️</div>
+
+            <h3>Study Timer</h3>
+
+            <p>
+                Use a simple timer to stay focused while studying.
+            </p>
+
+            <button class="open-btn" onclick="openTool('timerTool')">
+                Start Timer
+            </button>
+
+        </div>
+
+
+        <!-- MORE -->
+
+        <div class="tool-card" data-name="more tools">
+
+            <div class="tool-icon">🚀</div>
+
+            <h3>More Coming Soon</h3>
+
+            <p>
+                We're adding more useful student tools soon.
+            </p>
+
+            <button class="open-btn" onclick="alert('More tools are coming soon!')">
+                Coming Soon
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- GPA TOOL -->
+
+<section class="tool-area" id="gpaTool">
+
+    <div class="tool-panel">
+
+        <button class="back-btn" onclick="closeTools()">
+            ← Back to tools
+        </button>
+
+        <h2>📊 GPA Calculator</h2>
+
+        <p class="tool-description">
+            Enter your letter grades below.
+        </p>
+
+        <div class="form-group">
+            <label>Class 1</label>
+            <select class="gpa-grade">
+                <option value="">Select grade</option>
+                <option value="4">A</option>
+                <option value="3">B</option>
+                <option value="2">C</option>
+                <option value="1">D</option>
+                <option value="0">F</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Class 2</label>
+            <select class="gpa-grade">
+                <option value="">Select grade</option>
+                <option value="4">A</option>
+                <option value="3">B</option>
+                <option value="2">C</option>
+                <option value="1">D</option>
+                <option value="0">F</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Class 3</label>
+            <select class="gpa-grade">
+                <option value="">Select grade</option>
+                <option value="4">A</option>
+                <option value="3">B</option>
+                <option value="2">C</option>
+                <option value="1">D</option>
+                <option value="0">F</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Class 4</label>
+            <select class="gpa-grade">
+                <option value="">Select grade</option>
+                <option value="4">A</option>
+                <option value="3">B</option>
+                <option value="2">C</option>
+                <option value="1">D</option>
+                <option value="0">F</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Class 5</label>
+            <select class="gpa-grade">
+                <option value="">Select grade</option>
+                <option value="4">A</option>
+                <option value="3">B</option>
+                <option value="2">C</option>
+                <option value="1">D</option>
+                <option value="0">F</option>
+            </select>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateGPA()">
+            Calculate GPA
+        </button>
+
+        <div class="result" id="gpaResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL GRADE TOOL -->
+
+<section class="tool-area" id="finalTool">
+
+    <div class="tool-panel">
+
+        <button class="back-btn" onclick="closeTools()">
+            ← Back to tools
+        </button>
+
+        <h2>🎯 Final Grade Calculator</h2>
+
+        <p class="tool-description">
+            Find out what score you need on your final exam.
+        </p>
+
+        <div class="form-group">
+            <label>Current Grade (%)</label>
+            <input id="currentGrade" type="number" min="0" max="100" placeholder="Example: 82">
+        </div>
+
+        <div class="form-group">
+            <label>Final Exam Weight (%)</label>
+            <input id="finalWeight" type="number" min="0" max="100" placeholder="Example: 20">
+        </div>
+
+        <div class="form-group">
+            <label>Desired Final Grade (%)</label>
+            <input id="desiredGrade" type="number" min="0" max="100" placeholder="Example: 85">
+        </div>
+
+        <button class="calculate-btn" onclick="calculateFinalGrade()">
+            Calculate
+        </button>
+
+        <div class="result" id="finalResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- PERCENTAGE TOOL -->
+
+<section class="tool-area" id="percentTool">
+
+    <div class="tool-panel">
+
+        <button class="back-btn" onclick="closeTools()">
+            ← Back to tools
+        </button>
+
+        <h2>🧮 Percentage Calculator</h2>
+
+        <p class="tool-description">
+            Find what percentage one number is of another.
+        </p>
+
+        <div class="form-group">
+            <label>What is X% of Y?</label>
+
+            <input
+                id="percentX"
+                type="number"
+                placeholder="X — Example: 20"
+            >
+
+            <br><br>
+
+            <input
+                id="percentY"
+                type="number"
+                placeholder="Y — Example: 150"
+            >
+        </div>
+
+        <button class="calculate-btn" onclick="calculatePercentage()">
+            Calculate
+        </button>
+
+        <div class="result" id="percentResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- WORD TOOL -->
+
+<section class="tool-area" id="wordTool">
+
+    <div class="tool-panel">
+
+        <button class="back-btn" onclick="closeTools()">
+            ← Back to tools
+        </button>
+
+        <h2>📝 Word Counter</h2>
+
+        <p class="tool-description">
+            Paste or type your essay below.
+        </p>
+
+        <div class="form-group">
+
+            <textarea
+                id="wordText"
+                rows="12"
+                placeholder="Start typing or paste your essay..."
+                oninput="updateWordCount()"
+            ></textarea>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="wordCount">0</strong>
+                <span>Words</span>
+            </div>
+
+            <div class="stat">
+                <strong id="charCount">0</strong>
+                <span>Characters</span>
+            </div>
+
+            <div class="stat">
+                <strong id="sentenceCount">0</strong>
+                <span>Sentences</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TIMER TOOL -->
+
+<section class="tool-area" id="timerTool">
+
+    <div class="tool-panel">
+
+        <button class="back-btn" onclick="closeTools()">
+            ← Back to tools
+        </button>
+
+        <h2>⏱️ Study Timer</h2>
+
+        <p class="tool-description">
+            Focus for 25 minutes, then take a short break.
+        </p>
+
+        <div class="timer-display" id="timerDisplay">
+            25:00
+        </div>
+
+        <div class="timer-buttons">
+
+            <button
+                class="start"
+                id="timerButton"
+                onclick="toggleTimer()"
+            >
+                Start
+            </button>
+
+            <button
+                class="reset"
+                onclick="resetTimer()"
+            >
+                Reset
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>© 2026 StudentTools</p>
+
+    <p style="margin-top:8px;">
+        Free tools designed to make school a little easier.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* DARK MODE */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("darkMode", "true");
+    } else {
+        localStorage.setItem("darkMode", "false");
+    }
+}
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+}
+
+
+/* OPEN TOOL */
+
+function openTool(id) {
+
+    closeTools();
+
+    const tool = document.getElementById(id);
+
+    tool.classList.add("active");
+
+    tool.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+/* CLOSE TOOLS */
+
+function closeTools() {
+
+    document.querySelectorAll(".tool-area").forEach(tool => {
+        tool.classList.remove("active");
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* HOME */
+
+function goHome() {
+
+    closeTools();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* GPA */
+
+function calculateGPA() {
+
+    const grades = document.querySelectorAll(".gpa-grade");
+
+    let total = 0;
+    let count = 0;
+
+    grades.forEach(grade => {
+
+        if (grade.value !== "") {
+
+            total += Number(grade.value);
+            count++;
+
+        }
+
+    });
+
+    const result = document.getElementById("gpaResult");
+
+    if (count === 0) {
+
+        result.innerText = "Please enter at least one grade.";
+
+    } else {
+
+        const gpa = total / count;
+
+        result.innerHTML =
+            "Your GPA is <strong>" +
+            gpa.toFixed(2) +
+            "</strong> / 4.00";
+
+    }
+
+    result.classList.add("show");
+}
+
+
+/* FINAL GRADE */
+
+function calculateFinalGrade() {
+
+    const current =
+        Number(document.getElementById("currentGrade").value);
+
+    const weight =
+        Number(document.getElementById("finalWeight").value);
+
+    const desired =
+        Number(document.getElementById("desiredGrade").value);
+
+    const result =
+        document.getElementById("finalResult");
+
+    if (
+        isNaN(current) ||
+        isNaN(weight) ||
+        isNaN(desired) ||
+        weight <= 0 ||
+        weight > 100
+    ) {
+
+        result.innerText = "Please enter valid numbers.";
+
+        result.classList.add("show");
+
+        return;
+    }
+
+    const needed =
+        (desired - current * (1 - weight / 100))
+        / (weight / 100);
+
+    if (needed > 100) {
+
+        result.innerText =
+            "You would need more than 100%, so that target isn't possible with the current grade.";
+
+    } else if (needed <= 0) {
+
+        result.innerText =
+            "You already have enough points to reach your desired grade.";
+
+    } else {
+
+        result.innerHTML =
+            "You need <strong>" +
+            needed.toFixed(2) +
+            "%</strong> on your final.";
+
+    }
+
+    result.classList.add("show");
+}
+
+
+/* PERCENTAGE */
+
+function calculatePercentage() {
+
+    const x =
+        Number(document.getElementById("percentX").value);
+
+    const y =
+        Number(document.getElementById("percentY").value);
+
+    const result =
+        document.getElementById("percentResult");
+
+    if (isNaN(x) || isNaN(y) || y === 0) {
+
+        result.innerText =
+            "Please enter valid numbers.";
+
+    } else {
+
+        const answer = (x / 100) * y;
+
+        result.innerHTML =
+            "<strong>" +
+            x +
+            "%</strong> of <strong>" +
+            y +
+            "</strong> is <strong>" +
+            answer.toFixed(2) +
+            "</strong>";
+
+    }
+
+    result.classList.add("show");
+}
+
+
+/* WORD COUNTER */
+
+function updateWordCount() {
+
+    const text =
+        document.getElementById("wordText").value;
+
+    const trimmed = text.trim();
+
+    const words =
+        trimmed === ""
+        ? 0
+        : trimmed.split(/\s+/).length;
+
+    const characters =
+        text.length;
+
+    const sentences =
+        trimmed === ""
+        ? 0
+        : (trimmed.match(/[.!?]+/g) || []).length;
+
+    document.getElementById("wordCount").innerText =
+        words;
+
+    document.getElementById("charCount").innerText =
+        characters;
+
+    document.getElementById("sentenceCount").innerText =
+        sentences;
+}
+
+
+/* SEARCH */
+
+function searchTools() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".tool-card");
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+}
+
+
+/* TIMER */
+
+let timerSeconds = 25 * 60;
+let timerInterval = null;
+let timerRunning = false;
+
+
+function updateTimerDisplay() {
+
+    const minutes =
+        Math.floor(timerSeconds / 60);
+
+    const seconds =
+        timerSeconds % 60;
+
+    document.getElementById("timerDisplay").innerText =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+}
+
+
+function toggleTimer() {
+
+    const button =
+        document.getElementById("timerButton");
+
+    if (timerRunning) {
+
+        clearInterval(timerInterval);
+
+        timerRunning = false;
+
+        button.innerText = "Start";
+
+        return;
+    }
+
+    timerRunning = true;
+
+    button.innerText = "Pause";
+
+    timerInterval = setInterval(() => {
+
+        if (timerSeconds <= 0) {
+
+            clearInterval(timerInterval);
+
+            timerRunning = false;
+
+            button.innerText = "Start";
+
+            alert("🎉 Study session complete!");
+
+            return;
+        }
+
+        timerSeconds--;
+
+        updateTimerDisplay();
+
+    }, 1000);
+}
+
+
+function resetTimer() {
+
+    clearInterval(timerInterval);
+
+    timerSeconds = 25 * 60;
+
+    timerRunning = false;
+
+    document.getElementById("timerButton").innerText =
+        "Start";
+
+    updateTimerDisplay();
+}
+
+
+updateTimerDisplay();
+
+</script>
+
+</body>
+</html>
