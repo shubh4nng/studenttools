@@ -1110,6 +1110,340 @@ footer{
     font-size:55px;
   }
 }
+  /* =========================
+   AI CHATBOT
+========================= */
+
+.ai-nav-btn{
+  border:0;
+  padding:10px 15px;
+  border-radius:13px;
+  color:white;
+  font-weight:850;
+  background:linear-gradient(
+    135deg,
+    #7c3aed,
+    #2563eb,
+    #ec4899
+  );
+  box-shadow:0 7px 20px rgba(124,58,237,.22);
+  transition:.2s;
+}
+
+.ai-nav-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(124,58,237,.32);
+}
+
+.ai-section{
+  display:none;
+  padding:70px 0;
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(124,58,237,.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(236,72,153,.10),
+      transparent 30%
+    );
+}
+
+.ai-section.active{
+  display:block;
+}
+
+.ai-chat-card{
+  max-width:900px;
+  margin:auto;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:
+    0 25px 70px rgba(40,35,90,.14);
+}
+
+body.dark .ai-chat-card{
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45);
+}
+
+.ai-header{
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124,58,237,.08),
+      rgba(37,99,235,.06),
+      rgba(236,72,153,.07)
+    );
+}
+
+.ai-header-left{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.ai-avatar{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  font-size:25px;
+  background:var(--gradient);
+  color:white;
+  box-shadow:0 8px 22px rgba(124,58,237,.25);
+}
+
+.ai-header h2{
+  font-size:18px;
+}
+
+.ai-header span{
+  display:block;
+  margin-top:2px;
+  font-size:12px;
+  color:var(--green);
+  font-weight:800;
+}
+
+.ai-header-actions{
+  display:flex;
+  gap:7px;
+}
+
+.ai-small-btn{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+}
+
+.ai-small-btn:hover{
+  background:var(--surface2);
+}
+
+.ai-messages{
+  height:500px;
+  overflow-y:auto;
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  scroll-behavior:smooth;
+}
+
+.ai-message{
+  display:flex;
+  gap:10px;
+  max-width:85%;
+  align-items:flex-start;
+}
+
+.ai-message.user{
+  align-self:flex-end;
+  flex-direction:row-reverse;
+}
+
+.ai-message-avatar{
+  flex:0 0 34px;
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:var(--surface2);
+  font-size:17px;
+}
+
+.ai-message.user .ai-message-avatar{
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #06b6d4
+  );
+}
+
+.ai-bubble{
+  padding:13px 16px;
+  border-radius:18px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  line-height:1.65;
+  font-size:14px;
+  white-space:normal;
+}
+
+.ai-message.user .ai-bubble{
+  background:var(--gradient);
+  color:white;
+  border:0;
+}
+
+.ai-bubble strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.ai-bubble p{
+  margin:0;
+}
+
+.ai-bubble p + p{
+  margin-top:10px;
+}
+
+.ai-suggestions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:13px;
+}
+
+.ai-suggestions button{
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:12px;
+  font-weight:750;
+}
+
+.ai-suggestions button:hover{
+  border-color:var(--purple);
+  color:var(--purple);
+}
+
+.ai-typing{
+  display:none;
+  align-items:center;
+  gap:5px;
+  padding:0 25px 14px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.ai-typing.active{
+  display:flex;
+}
+
+.ai-typing span{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--purple);
+  animation:aiBounce 1.2s infinite;
+}
+
+.ai-typing span:nth-child(2){
+  animation-delay:.15s;
+}
+
+.ai-typing span:nth-child(3){
+  animation-delay:.3s;
+}
+
+@keyframes aiBounce{
+  0%,60%,100%{
+    transform:translateY(0);
+    opacity:.45;
+  }
+  30%{
+    transform:translateY(-5px);
+    opacity:1;
+  }
+}
+
+.ai-input-area{
+  padding:15px;
+  border-top:1px solid var(--border);
+  display:flex;
+  gap:10px;
+  background:var(--surface);
+}
+
+.ai-input-area textarea{
+  min-height:48px;
+  max-height:140px;
+  resize:none;
+  border-radius:15px;
+  padding:13px 14px;
+}
+
+.ai-send-btn{
+  flex:0 0 48px;
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:15px;
+  background:var(--gradient);
+  color:white;
+  font-size:20px;
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(124,58,237,.22);
+}
+
+.ai-send-btn:hover{
+  transform:translateY(-2px);
+}
+
+.ai-send-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.ai-disclaimer{
+  text-align:center;
+  padding:0 15px 15px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+@media(max-width:750px){
+
+  .ai-nav-btn{
+    display:none;
+  }
+
+  .ai-section{
+    padding:35px 0;
+  }
+
+  .ai-chat-card{
+    border-radius:20px;
+  }
+
+  .ai-messages{
+    height:58vh;
+    padding:18px 14px;
+  }
+
+  .ai-message{
+    max-width:92%;
+  }
+
+  .ai-header{
+    padding:14px;
+  }
+
+  .ai-input-area{
+    padding:10px;
+  }
+
+}
 </style>
 </head>
 
@@ -1124,7 +1458,10 @@ footer{
       <span class="logo-icon">🎓</span>
       StudentTools
     </a>
-
+<button class="ai-nav-btn" onclick="openAIChat()">
+  🤖 StudentTools AI
+</button>
+    
     <div class="nav-links" id="navLinks">
       <a href="#free-tools">Free Tools</a>
       <a href="#subjects">Subjects</a>
@@ -1725,7 +2062,135 @@ footer{
 
 </div>
 
+<!-- AI CHATBOT -->
 
+<section class="ai-section" id="aiChatSection">
+
+  <div class="container">
+
+    <div class="ai-chat-card">
+
+      <div class="ai-header">
+
+        <div class="ai-header-left">
+
+          <div class="ai-avatar">
+            🤖
+          </div>
+
+          <div>
+            <h2>StudentTools AI</h2>
+
+            <span>
+              ● Online · Your study assistant
+            </span>
+          </div>
+
+        </div>
+
+        <div class="ai-header-actions">
+
+          <button
+            class="ai-small-btn"
+            onclick="clearAIChat()"
+            title="Clear conversation"
+          >
+            🗑️
+          </button>
+
+          <button
+            class="ai-small-btn"
+            onclick="closeAIChat()"
+            title="Close"
+          >
+            ✕
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="ai-messages" id="aiMessages">
+
+        <div class="ai-message assistant">
+
+          <div class="ai-message-avatar">
+            🤖
+          </div>
+
+          <div class="ai-bubble">
+
+            <strong>Hey! 👋</strong>
+
+            <p>
+              I'm StudentTools AI. Ask me anything you're
+              studying and I'll help you work through it.
+            </p>
+
+            <div class="ai-suggestions">
+
+              <button onclick="useAISuggestion('Explain quadratic equations to me')">
+                🧮 Explain quadratic equations
+              </button>
+
+              <button onclick="useAISuggestion('Quiz me on biology')">
+                🔬 Quiz me on biology
+              </button>
+
+              <button onclick="useAISuggestion('Help me study for a test')">
+                📚 Help me study
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="ai-typing" id="aiTyping">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <label>StudentTools AI is thinking...</label>
+
+      </div>
+
+
+      <div class="ai-input-area">
+
+        <textarea
+          id="aiInput"
+          placeholder="Ask StudentTools AI anything..."
+          rows="1"
+          onkeydown="handleAIKeydown(event)"
+        ></textarea>
+
+        <button
+          class="ai-send-btn"
+          id="aiSendButton"
+          onclick="sendAIMessage()"
+        >
+          ➤
+        </button>
+
+      </div>
+
+      <div class="ai-disclaimer">
+        StudentTools AI can make mistakes. Check important information with your teacher or textbook.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+  
 <!-- FOOTER -->
 
 <footer>
@@ -3620,6 +4085,303 @@ function escapeHTML(value){
 ========================= */
 
 updateDashboard();
+
+
+/* =========================
+   STUDENTTOOLS AI
+========================= */
+
+const AI_WORKER_URL =
+  "https://studenttools-ai.shubhangdawadi12.workers.dev";
+
+
+let aiHistory = [];
+
+let aiBusy = false;
+
+
+/* OPEN CHAT */
+
+function openAIChat(){
+
+  const section =
+    document.getElementById("aiChatSection");
+
+  section.classList.add("active");
+
+  section.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+  setTimeout(function(){
+
+    document
+      .getElementById("aiInput")
+      .focus();
+
+  },500);
+
+}
+
+
+/* CLOSE CHAT */
+
+function closeAIChat(){
+
+  const section =
+    document.getElementById("aiChatSection");
+
+  section.classList.remove("active");
+
+}
+
+
+/* CLEAR CHAT */
+
+function clearAIChat(){
+
+  aiHistory = [];
+
+  const messages =
+    document.getElementById("aiMessages");
+
+  messages.innerHTML = `
+    <div class="ai-message assistant">
+
+      <div class="ai-message-avatar">
+        🤖
+      </div>
+
+      <div class="ai-bubble">
+
+        <strong>New conversation! 👋</strong>
+
+        <p>
+          What would you like to study?
+        </p>
+
+      </div>
+
+    </div>
+  `;
+
+  showToast("🧹 Conversation cleared.");
+
+}
+
+
+/* SUGGESTIONS */
+
+function useAISuggestion(text){
+
+  const input =
+    document.getElementById("aiInput");
+
+  input.value = text;
+
+  input.focus();
+
+  sendAIMessage();
+
+}
+
+
+/* ENTER KEY */
+
+function handleAIKeydown(event){
+
+  if(
+    event.key === "Enter" &&
+    !event.shiftKey
+  ){
+
+    event.preventDefault();
+
+    sendAIMessage();
+
+  }
+
+}
+
+
+/* ADD MESSAGE */
+
+function addAIMessage(role,text){
+
+  const messages =
+    document.getElementById("aiMessages");
+
+  const message =
+    document.createElement("div");
+
+  message.className =
+    "ai-message " +
+    (role === "user"
+      ? "user"
+      : "assistant");
+
+  const avatar =
+    role === "user"
+      ? "👤"
+      : "🤖";
+
+  const safeText =
+    escapeHTML(text)
+      .replace(/\n/g,"<br>");
+
+  message.innerHTML = `
+
+    <div class="ai-message-avatar">
+      ${avatar}
+    </div>
+
+    <div class="ai-bubble">
+      ${safeText}
+    </div>
+
+  `;
+
+  messages.appendChild(message);
+
+  messages.scrollTop =
+    messages.scrollHeight;
+
+}
+
+
+/* SEND MESSAGE */
+
+async function sendAIMessage(){
+
+  if(aiBusy){
+    return;
+  }
+
+  const input =
+    document.getElementById("aiInput");
+
+  const button =
+    document.getElementById("aiSendButton");
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+    return;
+  }
+
+  aiBusy = true;
+
+  button.disabled = true;
+
+  input.value = "";
+
+  addAIMessage(
+    "user",
+    text
+  );
+
+  aiHistory.push({
+    role:"user",
+    content:text
+  });
+
+  markStudyDay();
+
+  document
+    .getElementById("aiTyping")
+    .classList.add("active");
+
+
+  try{
+
+    const response =
+      await fetch(
+        AI_WORKER_URL,
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+
+            message:text,
+
+            history:aiHistory
+              .slice(0,-1)
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(!response.ok){
+
+      throw new Error(
+        data.error ||
+        "AI request failed."
+      );
+
+    }
+
+
+    const answer =
+      data.answer ||
+      "I couldn't generate a response.";
+
+
+    aiHistory.push({
+
+      role:"assistant",
+
+      content:answer
+
+    });
+
+
+    addAIMessage(
+      "assistant",
+      answer
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "StudentTools AI:",
+      error
+    );
+
+
+    addAIMessage(
+      "assistant",
+      "Sorry — I couldn't connect to StudentTools AI right now. Please try again in a moment."
+    );
+
+  }finally{
+
+    document
+      .getElementById("aiTyping")
+      .classList.remove("active");
+
+    button.disabled = false;
+
+    aiBusy = false;
+
+    input.focus();
+
+  }
+
+}
 
 </script>
 
