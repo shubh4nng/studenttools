@@ -3991,12 +3991,24 @@
     
     
     function subjectMessage(name){
-    
-      showToast(
-        `${name} tools are coming soon!`
-      );
-    
-    }
+
+  openAIChat();
+
+  const input =
+    document.getElementById("aiInput");
+
+  if(!input) return;
+
+  input.value =
+    `I need help with ${name}. Can you help me understand it and answer my questions?`;
+
+  input.focus();
+
+  showToast(
+    `📚 ${name} study help is ready!`
+  );
+
+}
     
     
     /* =========================
