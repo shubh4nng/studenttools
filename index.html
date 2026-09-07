@@ -1458,9 +1458,9 @@
         <span class="logo-icon">🎓</span>
         StudentTools
       </a>
-  <button class="ai-nav-btn" onclick="openAIChat()">
-    🤖 StudentTools AI
-  </button>
+  <button class="ai-nav-btn" onclick="showAIComingSoon()">
+  🤖 StudentTools AI
+</button>
       
       <div class="nav-links" id="navLinks">
         <a href="#free-tools">Free Tools</a>
@@ -2225,6 +2225,12 @@
       document.body.classList.contains("dark")
     );
   }
+
+    function showAIComingSoon(){
+
+  showToast("🤖 StudentTools AI is coming soon!");
+
+}
   
   if(localStorage.getItem("studenttools-dark") === "true"){
     document.body.classList.add("dark");
